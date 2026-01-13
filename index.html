@@ -260,11 +260,23 @@
     }
 
     function normalize(r) {
-      return {
-        verb: r[1], type: r[2], meaning: r[3],
-        exSp: r[4], exEn: r[5], pr: r[6]
-      };
-    }
+  return {
+    n: (r[0] || "").trim(),
+    verb: (r[1] || "").trim(),
+    type: (r[2] || "").trim(),
+    meaning: (r[3] || "").trim(),
+    yo: (r[4] || "").trim(),
+    tu: (r[5] || "").trim(),
+    el: (r[6] || "").trim(),
+    nos: (r[7] || "").trim(),
+    uds: (r[8] || "").trim(),
+    exSp: (r[9] || "").trim(),     // ✅ Example (Spanish)
+    exEn: (r[10] || "").trim(),    // ✅ Example (English)
+    pr: (r[11] || "").trim()
+  };
+}
+
+
 
     function render() {
       const x = filtered[idx];
