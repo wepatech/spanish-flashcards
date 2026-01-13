@@ -1,211 +1,290 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Spanish Verb Flashcards</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Spanish Verb Flashcards</title>
 
-<style>
-  :root{
-    --bg:#f4f6f8;
-    --card:#ffffff;
-    --text:#111827;
-    --muted:#6b7280;
-    --pill:#e5e7eb;
-    --btn:#2563eb;
-  }
+  <style>
+    :root{
+      --bg:#f4f6f8;
+      --card:#fff;
+      --text:#0f172a;
+      --muted:#64748b;
+      --pill:#e2e8f0;
+      --btn:#2563eb;
+      --btn2:#0f172a;
+      --shadow:0 10px 30px rgba(15,23,42,.12);
+      --radius:18px;
+    }
 
-  body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    background: var(--bg);
-    margin: 0;
-    padding: 16px;
-    display: flex;
-    justify-content: center;
-    color: var(--text);
-  }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      display:flex;
+      justify-content:center;
+      padding:18px;
+    }
 
-  .app {
-    width: 100%;
-    max-width: 520px;
-  }
+    .app{
+      width:100%;
+      max-width:720px;
+    }
 
-  /* Scene = the container that reserves space and provides perspective */
-  .scene {
-    position: relative;
-    perspective: 1200px;
-    width: 100%;
-    min-height: 420px; /* reserve height so controls don't jump */
-  }
+    .topbar{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      margin-bottom:12px;
+    }
 
-  /* Flipper rotates */
-  .flipper {
-    position: relative;
-    width: 100%;
-    min-height: 420px;
-    transform-style: preserve-3d;
-    transition: transform 420ms ease;
-  }
+    .title{
+      font-size:22px;
+      font-weight:800;
+      margin:0 12px 0 0;
+    }
 
-  .flipper.is-flipped {
-    transform: rotateY(180deg);
-  }
+    .chip{
+      background:var(--pill);
+      border-radius:999px;
+      padding:8px 12px;
+      font-size:14px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
 
-  /* Both faces must be stacked perfectly */
-  .face {
-    position: absolute;
-    inset: 0;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    background: var(--card);
-    border-radius: 16px;
-    padding: 22px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.10);
-    box-sizing: border-box;
-  }
+    .chip input, .chip select{
+      border:none;
+      background:transparent;
+      font-size:14px;
+      outline:none;
+    }
 
-  .face.back {
-    transform: rotateY(180deg);
-  }
+    .btn{
+      border:none;
+      border-radius:12px;
+      padding:10px 14px;
+      font-weight:700;
+      color:#fff;
+      background:var(--btn);
+      cursor:pointer;
+    }
+    .btn.secondary{ background:var(--btn2); }
 
-  /* Typography */
-  h1 {
-    margin: 0;
-    font-size: 30px;
-    line-height: 1.15;
-  }
+    /* --- Flip card layout (this prevents overlap) --- */
+    .scene{
+      perspective:1200px;
+      width:100%;
+      min-height:420px; /* reserves space */
+    }
+    .flipper{
+      position:relative;
+      width:100%;
+      min-height:420px;
+      transform-style:preserve-3d;
+      transition:transform 420ms ease;
+    }
+    .flipper.is-flipped{ transform:rotateY(180deg); }
 
-  h2 {
-    margin: 0;
-    font-size: 20px;
-  }
+    .face{
+      position:absolute;
+      inset:0;
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:22px;
+      backface-visibility:hidden;
+      -webkit-backface-visibility:hidden;
+      overflow:hidden;
+    }
+    .face.back{ transform:rotateY(180deg); }
 
-  .meaning {
-    margin-top: 8px;
-    font-size: 18px;
-    color: #374151;
-  }
+    .row{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:10px;
+    }
 
-  .example {
-    margin-top: 18px;
-    font-size: 16px;
-    line-height: 1.5;
-  }
+    h1{
+      margin:0;
+      font-size:34px;
+      line-height:1.1;
+    }
+    .meaning{
+      margin-top:8px;
+      font-size:18px;
+      color:#334155;
+    }
 
-  .muted {
-    color: var(--muted);
-    font-size: 14px;
-    margin-top: 14px;
-  }
+    .meta{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      text-align:right;
+    }
+    .pill{
+      background:var(--pill);
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:13px;
+      white-space:nowrap;
+    }
 
-  .pillRow {
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-    margin-top: 14px;
-  }
+    .examples{
+      margin-top:18px;
+      font-size:16px;
+      line-height:1.55;
+    }
+    .examples .en{
+      margin-top:8px;
+      color:var(--muted);
+      font-size:14px;
+    }
 
-  .pill {
-    display: inline-block;
-    background: var(--pill);
-    padding: 6px 10px;
-    border-radius: 999px;
-    font-size: 13px;
-  }
+    .hint{
+      margin-top:14px;
+      color:var(--muted);
+      font-size:13px;
+    }
 
-  /* Controls */
-  .controls {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    margin-top: 14px;
-  }
+    .grid{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:10px;
+      font-size:16px;
+    }
+    .grid div b{ display:inline-block; min-width:140px; }
 
-  button {
-    padding: 10px 14px;
-    border-radius: 10px;
-    border: none;
-    background: var(--btn);
-    color: white;
-    font-size: 15px;
-    cursor: pointer;
-  }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-top:12px;
+    }
+    .count{ color:var(--muted); font-size:14px; }
 
-  #count {
-    color: var(--muted);
-    font-size: 14px;
-    white-space: nowrap;
-  }
+    /* Make taps feel nice */
+    .scene{ cursor:pointer; user-select:none; -webkit-tap-highlight-color: transparent; }
 
-  /* Make card feel tappable */
-  .scene { cursor: pointer; user-select: none; }
-</style>
+    @media (min-width: 560px){
+      .grid{ grid-template-columns: 1fr 1fr; }
+      .grid div b{ min-width:120px; }
+    }
+  </style>
 </head>
 
 <body>
-<div class="app">
+  <div class="app">
+    <div class="topbar">
+      <div class="title">Spanish Verb Flashcards</div>
 
-  <!-- FLIP CARD -->
-  <div class="scene" id="scene">
-    <div class="flipper" id="flipper">
-
-      <!-- FRONT -->
-      <div class="face front">
-        <h1 id="verb">Loading…</h1>
-        <div class="meaning" id="meaning"></div>
-
-        <div class="example">
-          <div><b>Spanish:</b> <span id="exSp"></span></div>
-          <div class="muted"><b>English:</b> <span id="exEn"></span></div>
-        </div>
-
-        <div class="pillRow">
-          <div class="pill" id="typePill"></div>
-          <div class="pill" id="prPill"></div>
-        </div>
-
-        <div class="muted">Tap card to flip</div>
+      <div class="chip">
+        🔎 <input id="q" placeholder="Search (comer, eat, arroz)" />
       </div>
 
-      <!-- BACK -->
-      <div class="face back">
-        <h2>Presente (Indicativo)</h2>
-
-        <div class="example" style="margin-top:16px;">
-          <div><b>Yo:</b> <span id="yoForm"></span></div>
-          <div><b>Tú:</b> <span id="tuForm"></span></div>
-          <div><b>Él/Ella/Usted:</b> <span id="elForm"></span></div>
-          <div><b>Nosotros/as:</b> <span id="nosForm"></span></div>
-          <div><b>Ellos/Ellas/Ustedes:</b> <span id="udsForm"></span></div>
-        </div>
-
-        <div class="muted">Tap card to flip back</div>
+      <div class="chip">
+        Type:
+        <select id="typeFilter">
+          <option value="ALL">All</option>
+          <option value="AR">AR</option>
+          <option value="ER">ER</option>
+          <option value="IR">IR</option>
+          <option value="Irregular">Irregular</option>
+        </select>
       </div>
 
+      <div class="chip">
+        PR:
+        <select id="prFilter">
+          <option value="ALL">All</option>
+          <option value="PR">PR only 🇵🇷</option>
+        </select>
+      </div>
+
+      <button class="btn secondary" id="flipBtn" type="button">Flip</button>
+      <button class="btn" id="shuffleBtn" type="button">Shuffle</button>
+    </div>
+
+    <div class="scene" id="scene">
+      <div class="flipper" id="flipper">
+        <!-- FRONT -->
+        <div class="face front">
+          <div class="row">
+            <div>
+              <h1 id="verb">Loading…</h1>
+              <div class="meaning" id="meaning"></div>
+            </div>
+            <div class="meta">
+              <div class="pill" id="typePill">—</div>
+              <div class="pill" id="prPill">—</div>
+              <div class="pill" id="countPill">—</div>
+            </div>
+          </div>
+
+          <div class="examples">
+            <div id="exSp"></div>
+            <div class="en" id="exEn"></div>
+          </div>
+
+          <div class="hint">Tap the card to flip. Use Prev/Next to move.</div>
+        </div>
+
+        <!-- BACK -->
+        <div class="face back">
+          <div class="row">
+            <div>
+              <h1>Presente</h1>
+              <div class="meaning">Indicativo (no vosotros)</div>
+            </div>
+            <div class="meta">
+              <div class="pill" id="verbMini">—</div>
+            </div>
+          </div>
+
+          <div class="grid">
+            <div><b>Yo:</b> <span id="yoForm">—</span></div>
+            <div><b>Tú:</b> <span id="tuForm">—</span></div>
+            <div><b>Él/Ella/Usted:</b> <span id="elForm">—</span></div>
+            <div><b>Nosotros/as:</b> <span id="nosForm">—</span></div>
+            <div><b>Ellos/Ellas/Uds:</b> <span id="udsForm">—</span></div>
+          </div>
+
+          <div class="hint">Tap to flip back.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav">
+      <button class="btn secondary" id="prev" type="button">◀ Prev</button>
+      <div class="count" id="count">—</div>
+      <button class="btn secondary" id="next" type="button">Next ▶</button>
     </div>
   </div>
 
-  <!-- NAV -->
-  <div class="controls">
-    <button id="prev">← Prev</button>
-    <div id="count"></div>
-    <button id="next">Next →</button>
-  </div>
-
-</div>
-
 <script>
-  // ✅ Put your published CSV link here (must end with output=csv)
+  // 1) PASTE YOUR PUBLISHED CSV LINK HERE (must end in output=csv)
   const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSbYZNlgAVAtpZMxslJMnBTf1kKkBGdE549m3_yACaz5ML8r9oExmuxMggA8-Py9Pzb-Plv2AlSdMzp/pub?output=csv";
 
+  // Sheet columns expected:
+  // 0 Number | 1 Verb | 2 Type | 3 English Meaning | 4 Yo | 5 Tú | 6 Él/Ella/Usted | 7 Nosotros/as | 8 Ellos/Ellas/Ustedes
+  // 9 Example (Spanish) | 10 Example (English) | 11 PR Usage
+  let all = [];
   let filtered = [];
   let idx = 0;
 
   const flipper = document.getElementById("flipper");
   const scene = document.getElementById("scene");
 
-  const el = (id) => document.getElementById(id);
+  const $ = (id) => document.getElementById(id);
 
   function parseCSV(text) {
     const rows = [];
@@ -215,36 +294,22 @@
       const c = text[i];
       const n = text[i + 1];
 
-      if (c === '"' && inQuotes && n === '"') {
-        cell += '"'; i++;
-      } else if (c === '"') {
-        inQuotes = !inQuotes;
-      } else if (c === "," && !inQuotes) {
-        row.push(cell); cell = "";
-      } else if ((c === "\n" || c === "\r") && !inQuotes) {
-        if (cell.length || row.length) {
-          row.push(cell);
-          rows.push(row);
-        }
+      if (c === '"' && inQuotes && n === '"') { cell += '"'; i++; }
+      else if (c === '"') { inQuotes = !inQuotes; }
+      else if (c === "," && !inQuotes) { row.push(cell); cell = ""; }
+      else if ((c === "\n" || c === "\r") && !inQuotes) {
+        if (cell.length || row.length) { row.push(cell); rows.push(row); }
         row = []; cell = "";
-        if (c === "\r" && n === "\n") i++; // handle CRLF
-      } else {
-        cell += c;
-      }
+        if (c === "\r" && n === "\n") i++;
+      } else { cell += c; }
     }
 
-    if (cell.length || row.length) {
-      row.push(cell);
-      rows.push(row);
-    }
-
+    if (cell.length || row.length) { row.push(cell); rows.push(row); }
     return rows;
   }
 
-  // Sheet columns:
-  // 0 Number | 1 Verb | 2 Type | 3 English Meaning | 4 Yo | 5 Tú | 6 Él | 7 Nosotros | 8 Ellos
-  // 9 Example (Spanish) | 10 Example (English) | 11 PR Usage
   function normalize(r) {
+    const pr = (r[11] || "").trim();
     return {
       verb: (r[1] || "").trim(),
       type: (r[2] || "").trim(),
@@ -256,72 +321,139 @@
       uds: (r[8] || "").trim(),
       exSp: (r[9] || "").trim(),
       exEn: (r[10] || "").trim(),
-      pr: (r[11] || "").trim()
+      pr: pr,
+      isPR: /yes/i.test(pr)
     };
   }
 
-  function render() {
-    const x = filtered[idx];
-    if (!x) return;
+  function applyFilters() {
+    const q = $("q").value.trim().toLowerCase();
+    const t = $("typeFilter").value;
+    const prOnly = $("prFilter").value === "PR";
 
+    filtered = all.filter(x => {
+      if (!x.verb) return false;
+
+      if (t !== "ALL" && x.type !== t) return false;
+      if (prOnly && !x.isPR) return false;
+
+      if (!q) return true;
+
+      const hay = [
+        x.verb, x.meaning, x.exSp, x.exEn
+      ].join(" ").toLowerCase();
+
+      return hay.includes(q);
+    });
+
+    idx = 0;
+    render();
+  }
+
+  function render() {
+    if (!filtered.length) {
+      $("verb").textContent = "No matches";
+      $("meaning").textContent = "Try clearing filters or search.";
+      $("exSp").textContent = "";
+      $("exEn").textContent = "";
+      $("typePill").textContent = "—";
+      $("prPill").textContent = "—";
+      $("count").textContent = "0 / 0";
+      $("countPill").textContent = "0 / 0";
+      $("verbMini").textContent = "—";
+      $("yoForm").textContent = "—";
+      $("tuForm").textContent = "—";
+      $("elForm").textContent = "—";
+      $("nosForm").textContent = "—";
+      $("udsForm").textContent = "—";
+      return;
+    }
+
+    const x = filtered[idx];
     flipper.classList.remove("is-flipped");
 
-    el("verb").textContent = x.verb || "";
-    el("meaning").textContent = x.meaning || "";
-    el("exSp").textContent = x.exSp || "";
-    el("exEn").textContent = x.exEn || "";
+    $("verb").textContent = x.verb;
+    $("meaning").textContent = x.meaning;
+    $("exSp").textContent = x.exSp;
+    $("exEn").textContent = x.exEn;
 
-    el("typePill").textContent = x.type || "";
-    el("prPill").textContent = (x.pr && x.pr.includes("Yes")) ? "PR 🇵🇷" : "Standard";
+    $("typePill").textContent = x.type || "—";
+    $("prPill").textContent = x.isPR ? "PR 🇵🇷" : "Standard";
+    $("count").textContent = `${idx + 1} / ${filtered.length}`;
+    $("countPill").textContent = `${idx + 1} / ${filtered.length}`;
+    $("verbMini").textContent = x.verb;
 
-    el("yoForm").textContent = x.yo || "—";
-    el("tuForm").textContent = x.tu || "—";
-    el("elForm").textContent = x.el || "—";
-    el("nosForm").textContent = x.nos || "—";
-    el("udsForm").textContent = x.uds || "—";
-
-    el("count").textContent = `${idx + 1} / ${filtered.length}`;
+    $("yoForm").textContent = x.yo || "—";
+    $("tuForm").textContent = x.tu || "—";
+    $("elForm").textContent = x.el || "—";
+    $("nosForm").textContent = x.nos || "—";
+    $("udsForm").textContent = x.uds || "—";
   }
 
   function next() {
+    if (!filtered.length) return;
     idx = (idx + 1) % filtered.length;
     render();
   }
 
   function prev() {
+    if (!filtered.length) return;
     idx = (idx - 1 + filtered.length) % filtered.length;
     render();
   }
 
-  document.getElementById("next").addEventListener("click", (e) => {
-    e.stopPropagation();
-    next();
-  });
-
-  document.getElementById("prev").addEventListener("click", (e) => {
-    e.stopPropagation();
-    prev();
-  });
-
-  // Tap/click card to flip (but not when clicking buttons)
-  scene.addEventListener("click", (e) => {
-    if (e.target.tagName === "BUTTON") return;
+  function flip() {
     flipper.classList.toggle("is-flipped");
+  }
+
+  function shuffle() {
+    for (let i = filtered.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [filtered[i], filtered[j]] = [filtered[j], filtered[i]];
+    }
+    idx = 0;
+    render();
+  }
+
+  // Buttons (stop flip when clicking controls)
+  $("next").addEventListener("click", (e) => { e.stopPropagation(); next(); });
+  $("prev").addEventListener("click", (e) => { e.stopPropagation(); prev(); });
+  $("flipBtn").addEventListener("click", (e) => { e.stopPropagation(); flip(); });
+  $("shuffleBtn").addEventListener("click", (e) => { e.stopPropagation(); shuffle(); });
+
+  // Tap card to flip (mobile friendly)
+  scene.addEventListener("click", (e) => {
+    if (e.target.closest("button")) return;
+    flip();
   });
 
-  fetch(CSV_URL)
+  // Filters
+  $("q").addEventListener("input", applyFilters);
+  $("typeFilter").addEventListener("change", applyFilters);
+  $("prFilter").addEventListener("change", applyFilters);
+
+  // Load CSV
+  function withCacheBust(url) {
+    const sep = url.includes("?") ? "&" : "?";
+    return url + sep + "v=" + Date.now();
+  }
+
+  fetch(withCacheBust(CSV_URL))
     .then(r => r.text())
     .then(t => {
       const rows = parseCSV(t);
-      filtered = rows.slice(1).map(normalize).filter(x => x.verb);
+      all = rows.slice(1).map(normalize).filter(x => x.verb);
+      filtered = [...all];
       idx = 0;
       render();
     })
-    .catch(() => {
-      el("verb").textContent = "Could not load CSV";
-      el("meaning").textContent = "Check your CSV_URL link (must be output=csv).";
+    .catch(err => {
+      $("verb").textContent = "Could not load CSV";
+      $("meaning").textContent = "Make sure CSV_URL ends in output=csv and the sheet is published.";
+      $("exSp").textContent = "";
+      $("exEn").textContent = "";
+      console.error(err);
     });
 </script>
-
 </body>
 </html>
