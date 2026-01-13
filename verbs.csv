@@ -1,0 +1,208 @@
+Number, Verb ,Type,English Meaning,Yo,Tú,Él/Ella/Usted,Nosotros/as,Ellos/Ellas/Ustedes,Example (Spanish),Example (English),PR Usage
+1,Hablar,AR,To speak,hablo,hablas,habla,hablamos,hablan,Hablo español todos los días.,I speak Spanish every day.,No
+2,Comer,ER,To eat,como,comes,come,comemos,comen,Como arroz con habichuelas.,I eat rice and beans.,No
+3,Vivir,IR,To live,vivo,vives,vive,vivimos,viven,Vivo en Washington.,I live in Washington.,No
+4,Amar,AR,To love,amo,amas,ama,amamos,aman,Amo a mi familia.,I love my family.,No
+5,Beber,ER,To drink,bebo,bebes,bebe,bebemos,beben,Bebo café por la mañana.,I drink coffee in the morning.,No
+6,Escribir,IR,To write,escribo,escribes,escribe,escribimos,escriben,Escribo mensajes en español.,I write messages in Spanish.,No
+7,Trabajar,AR,To work,trabajo,trabajas,trabaja,trabajamos,trabajan,Trabajo mucho esta semana.,I work a lot this week.,No
+8,Aprender,ER,To learn,aprendo,aprendes,aprende,aprendemos,aprenden,Aprendo español poco a poco.,I learn Spanish little by little.,No
+9,Abrir,IR,To open,abro,abres,abre,abrimos,abren,Abro la puerta.,I open the door.,No
+10,Cantar,AR,To sing,canto,cantas,canta,cantamos,cantan,Canto en el carro.,I sing in the car.,No
+11,Correr,ER,To run,corro,corres,corre,corremos,corren,Corro en el parque.,I run in the park.,No
+12,Decidir,IR,To decide,decido,decides,decide,decidimos,deciden,Decido hoy.,I decide today.,No
+13,Escuchar,AR,To listen,escucho,escuchas,escucha,escuchamos,escuchan,Escucho música.,I listen to music.,No
+14,Leer,ER,To read,leo,lees,lee,leemos,leen,Leo antes de dormir.,I read before sleeping.,No
+15,Recibir,IR,To receive,recibo,recibes,recibe,recibimos,reciben,Recibo mensajes.,I receive messages.,No
+16,Mirar,AR,To watch,miro,miras,mira,miramos,miran,Mi hija mira dibujos.,My daughter watches cartoons.,No
+17,Vender,ER,To sell,vendo,vendes,vende,vendemos,venden,Vendo ropa.,I sell clothes.,No
+18,Subir,IR,To go up,subo,subes,sube,subimos,suben,Subo las escaleras.,I go up the stairs.,No
+19,Estudiar,AR,To study,estudio,estudias,estudia,estudiamos,estudian,Estudio español.,I study Spanish.,No
+20,Comprender,ER,To understand,comprendo,comprendes,comprende,comprendemos,comprenden,Comprendo ahora.,I understand now.,No
+21,Asistir,IR,To attend,asisto,asistes,asiste,asistimos,asisten,Asisto a la reunión.,I attend the meeting.,No
+22,Bailar,AR,To dance,bailo,bailas,baila,bailamos,bailan,Bailamos juntos.,We dance together.,No
+23,Responder,ER,To answer,respondo,respondes,responde,respondemos,responden,Respondo rápido.,I answer quickly.,No
+24,Compartir,IR,To share,comparto,compartes,comparte,compartimos,comparten,Comparto comida.,I share food.,No
+25,Viajar,AR,To travel,viajo,viajas,viaja,viajamos,viajan,Viajamos a Puerto Rico.,We travel to Puerto Rico.,No
+26,Creer,ER,To believe,creo,crees,cree,creemos,creen,Creo en ti.,I believe in you.,No
+27,Existir,IR,To exist,existo,existes,existe,existimos,existen,Eso existe.,That exists.,No
+28,Llamar,AR,To call,llamo,llamas,llama,llamamos,llaman,Llamo a mi mamá.,I call my mom.,No
+29,Prometer,ER,To promise,prometo,prometes,promete,prometemos,prometen,Prometo llegar temprano.,I promise to arrive early.,No
+30,Permitir,IR,To allow,permito,permites,permite,permitimos,permiten,Permito eso.,I allow that.,No
+31,Janguear,AR,To hang out,jangueo,jangueas,janguea,jangueamos,janguean,Jangueamos el viernes.,We hang out on Friday.,Yes 🇵🇷
+32,Guayar,AR,To grind/work hard,guayo,guayas,guaya,guayamos,guayan,Guayo todos los días.,I grind every day.,Yes 🇵🇷
+33,Vacilar,AR,To joke,vacilo,vacilas,vacila,vacilamos,vacilan,Vacilo contigo.,I joke with you.,Yes 🇵🇷
+34,Pichear,AR,To ignore,picheo,picheas,pichea,picheamos,pichean,Picheo el drama.,I ignore the drama.,Yes 🇵🇷
+35,Resolver,ER,To figure it out,resolvo,resolves,resolve,resolvemos,resolven,Resuelvo eso.,I figure that out.,Yes 🇵🇷
+36,Meter mano,Phrase,To take action,meto mano,metes mano,mete mano,metemos mano,meten mano,Meto mano rápido.,I take action quickly.,Yes 🇵🇷
+37,Bregar,AR,To deal with,brego,bregas,brega,bregamos,bregan,Brego con eso.,I deal with that.,Yes 🇵🇷
+38,Guindar,AR,To hang up (phone),guindo,guindas,guinda,guindamos,guindan,Guindo la llamada.,I hang up the call.,Yes 🇵🇷
+40,Parquear,AR,To park,parqueo,parqueas,parquea,parqueamos,parquean,Parqueo aquí.,I park here.,Yes 🇵🇷
+41,Caminar,AR,To walk,camino,caminas,camina,caminamos,caminan,Camino al trabajo.,I walk to work.,No
+42,Cocinar,AR,To cook,cocino,cocinas,cocina,cocinamos,cocinan,Cocino en casa.,I cook at home.,No
+43,Comprar,AR,To buy,compro,compras,compra,compramos,compran,Compro pan.,I buy bread.,No
+44,Buscar,AR,To look for,busco,buscas,busca,buscamos,buscan,BUSCO mis llaves.,I look for my keys.,No
+45,Llegar,AR,To arrive,llego,llegas,llega,llegamos,llegan,Llego tarde.,I arrive late.,No
+46,Salir,IR,To go out,salgo,sales,sale,salimos,salen,Salgo con amigos.,I go out with friends.,No
+47,Entrar,AR,To enter,entro,entras,entra,entramos,entran,Entro al edificio.,I enter the building.,No
+48,Volver,ER,To return,vuelvo,vuelves,vuelve,volvemos,vuelven,Vuelvo mañana.,I return tomorrow.,No
+49,Llevar,AR,To carry/wear,llevo,llevas,lleva,llevamos,llevan,Llevo chaqueta.,I wear a jacket.,No
+50,Traer,ER,To bring,traigo,traes,trae,traemos,traen,Traigo comida.,I bring food.,No
+51,Pagar,AR,To pay,pago,pagas,paga,pagamos,pagan,Pago la cuenta.,I pay the bill.,No
+52,Ganar,AR,To win/earn,gano,ganas,gana,ganamos,ganan,Gano dinero.,I earn money.,No
+53,Perder,ER,To lose,perdo,perdes,perde,perdemos,perden,Pierdo el guagua.,I miss the bus.,No
+54,Sentir,IR,To feel,siento,sientes,siente,sentimos,sienten,Siento alegría.,I feel joy.,No
+55,Pensar,AR,To think,pienso,piensas,piensa,pensamos,piensan,Pienso mucho.,I think a lot.,No
+56,Crecer,ER,To grow,creczco,creces,crece,crecemos,crecen,Crece rápido.,It grows fast.,No
+57,Cambiar,AR,To change,cambio,cambias,cambia,cambiamos,cambian,Cambio planes.,I change plans.,No
+58,Ayudar,AR,To help,ayudo,ayudas,ayuda,ayudamos,ayudan,Ayudo a mi familia.,I help my family.,No
+59,Usar,AR,To use,uso,usas,usa,usamos,usan,Uso el teléfono.,I use the phone.,No
+60,Necesitar,AR,To need,necesito,necesitas,necesita,necesitamos,necesitan,Necesito ayuda.,I need help.,No
+61,Querer,ER,To want/love,quiero,quieres,quiere,queremos,quieren,Quiero café.,I want coffee.,No
+62,Poder,ER,To be able to,puedo,puedes,puede,podemos,pueden,Puedo ir.,I can go.,No
+63,Deber,ER,To have to,debo,debes,debe,debemos,deben,Debo trabajar.,I have to work.,No
+64,Seguir,IR,To continue,siguo,sigues,sigue,seguimos,siguen,Sigo aprendiendo.,I keep learning.,No
+65,Dormir,IR,To sleep,duermo,duermes,duerme,dormimos,duermen,Duermo bien.,I sleep well.,No
+66,Jugar,AR,To play,jugo,jugas,juga,jugamos,jugan,Juego con mi hija.,I play with my daughter.,No
+67,Empezar,AR,To begin,empiezo,empiezas,empieza,empezamos,empiezan,Empiezo hoy.,I start today.,No
+68,Terminar,AR,To finish,termino,terminas,termina,terminamos,terminan,Termino temprano.,I finish early.,No
+69,Recordar,AR,To remember,recordo,recordas,recorda,recordamos,recordan,Recuerdo todo.,I remember everything.,No
+70,Olvidar,AR,To forget,olvido,olvidas,olvida,olvidamos,olvidan,Olvido eso.,I forget that.,No
+71,Estar,Irregular,To be (state),estoy,estás,está,estamos,están,Estoy bien.,I am fine.,No
+72,Ser,Irregular,To be (identity),soy,eres,es,somos,son,Soy boricua.,I am Puerto Rican.,No
+73,Tener,Irregular,To have,tengo,tienes,tiene,tenemos,tienen,Tengo tiempo.,I have time.,No
+74,Hacer,Irregular,To do/make,hago,haces,hace,hacemos,hacen,Hago comida.,I make food.,No
+75,Decir,Irregular,To say,digo,dices,dice,decimos,dicen,Digo la verdad.,I tell the truth.,No
+76,Ir,Irregular,To go,voy,vas,va,vamos,van,Voy ahora.,I go now.,No
+77,Ver,Irregular,To see,veo,ves,ve,vemos,ven,Veo todo.,I see everything.,No
+78,Dar,Irregular,To give,doy,das,da,damos,dan,Doy gracias.,I give thanks.,No
+79,Saber,Irregular,To know,sé,sabes,sabe,sabemos,saben,Sé eso.,I know that.,No
+80,Conocer,ER,To know (people),conozco,conoces,conoce,conocemos,conocen,Conozco a ella.,I know her.,No
+81,Poner,Irregular,To put,pongo,pones,pone,ponemos,ponen,Pongo música.,I put on music.,No
+82,Saludar,AR,To greet,saludo,saludas,saluda,saludamos,saludan,Saludo a todos.,I greet everyone.,No
+83,Entrenar,AR,To train,entreno,entrenas,entrena,entrenamos,entrenan,Entreno fuerte.,I train hard.,Yes 🇵🇷
+84,Guiar,AR,To guide/drive,guio,guias,guia,guiamos,guian,Guío aquí.,I drive here.,Yes 🇵🇷
+85,Montar,AR,To ride/set up,monto,montas,monta,montamos,montan,Monto la mesa.,I set up the table.,Yes 🇵🇷
+86,Tirar,AR,To throw/ditch,tiro,tiras,tira,tiramos,tiran,Tiro eso.,I throw that away.,Yes 🇵🇷
+87,Romper,ER,To break,rompo,rompes,rompe,rompemos,rompen,Rompo el vaso.,I break the glass.,No
+88,Arreglar,AR,To fix,arreglo,arreglas,arregla,arreglamos,arreglan,Me arreglo rápido.,I get ready fast.,Yes 🇵🇷
+89,Faltar,AR,To be missing,falto,faltas,falta,faltamos,faltan,Falta uno.,One is missing.,No
+90,Sobrar,AR,To have extra,sobro,sobras,sobra,sobramos,sobran,Sobra comida.,There is extra food.,No
+91,Esperar,AR,To wait/hope,espero,esperas,espera,esperamos,esperan,Espero aquí.,I wait here.,No
+92,Manejar,AR,To drive,manejo,manejas,maneja,manejamos,manejan,Manejo al trabajo.,I drive to work.,Yes 🇵🇷
+93,Estacionar,AR,To park,estaciono,estacionas,estaciona,estacionamos,estacionan,Estaciono allí.,I park there.,Yes 🇵🇷
+94,Lidiar,AR,To deal with,lidio,lidias,lidia,lidiamos,lidian,Lidio con eso.,I deal with that.,Yes 🇵🇷
+95,Quejarse,Reflexive,To complain,me quejo,te quejas,se queja,nos quejamos,se quejan,Se queja mucho.,They complain a lot.,No
+96,Callar,AR,To be quiet,callo,callas,calla,callamos,callan,Callo ahora.,I stay quiet now.,No
+97,Gritar,AR,To shout,grito,gritas,grita,gritamos,gritan,Grito fuerte.,I shout loudly.,No
+98,Reír,IR,To laugh,río,ríes,ríe,reímos,ríen,Río mucho.,I laugh a lot.,No
+99,Sonreír,IR,To smile,sonrío,sonríes,sonríe,sonreímos,sonríen,Sonrío siempre.,I always smile.,No
+100,Llorar,AR,To cry,lloro,lloras,llora,lloramos,lloran,Lloro feliz.,I cry happily.,No
+101,Confiar,AR,To trust,confio,confias,confia,confiamos,confian,Confío en ti.,I trust you.,No
+102,Temer,ER,To fear,temo,temes,teme,tememos,temen,Temo perder.,I fear losing.,No
+103,Odiar,AR,To hate,odio,odias,odia,odiamos,odian,Odio mentiras.,I hate lies.,No
+104,Encantar,AR,To love (something),encanto,encantas,encanta,encantamos,encantan,Me encanta la música.,I love music.,No
+105,Molestar,AR,To bother,molesto,molestas,molesta,molestamos,molestan,Me molesta eso.,That bothers me.,No
+106,Aceptar,AR,To accept,acepto,aceptas,acepta,aceptamos,aceptan,Acepto la oferta.,I accept the offer.,No
+107,Rechazar,AR,To reject,rechazo,rechazas,rechaza,rechazamos,rechazan,Rechazo eso.,I reject that.,No
+108,Cambiarse,Reflexive,To change clothes,me cambio,te cambias,se cambia,nos cambiamos,se cambian,Me cambio rápido.,I change quickly.,No
+109,Vestirse,Reflexive,To get dressed,me vesto,te vestes,se veste,nos vestimos,se vesten,Me visto elegante.,I get dressed nicely.,No
+110,Quitarse,Reflexive,To take off clothes,me quito,te quitas,se quita,nos quitamos,se quitan,Me quito los zapatos.,I take off my shoes.,Yes 🇵🇷
+111,Encender,ER,To turn on,encendo,encendes,encende,encendemos,encenden,Enciendo la luz.,I turn on the light.,No
+112,Apagar,AR,To turn off,apago,apagas,apaga,apagamos,apagan,Apago el teléfono.,I turn off the phone.,No
+113,Conectar,AR,To connect,conecto,conectas,conecta,conectamos,conectan,Conecto el cable.,I connect the cable.,No
+114,Cargar,AR,To charge,cargo,cargas,carga,cargamos,cargan,Cargo el celular.,I charge the phone.,Yes 🇵🇷
+115,Descargar,AR,To download,descargo,descargas,descarga,descargamos,descargan,Descargo la app.,I download the app.,No
+116,Guardar,AR,To save/store,guardo,guardas,guarda,guardamos,guardan,Guardo el archivo.,I save the file.,No
+117,Borrar,AR,To delete,borro,borras,borra,borramos,borran,Borro el mensaje.,I delete the message.,No
+118,Revisar,AR,To check,reviso,revisas,revisa,revisamos,revisan,Reviso el correo.,I check the email.,No
+119,Confirmar,AR,To confirm,confirmo,confirmas,confirma,confirmamos,confirman,Confirmo la cita.,I confirm the appointment.,No
+120,Cancelar,AR,To cancel,cancelo,cancelas,cancela,cancelamos,cancelan,Cancelo el plan.,I cancel the plan.,No
+121,Reunirse,Reflexive,To meet up,me reuno,te reunes,se reune,nos reunimos,se reunen,Nos reunimos hoy.,We meet today.,No
+122,Invitar,AR,To invite,invito,invitas,invita,invitamos,invitan,Invito a amigos.,I invite friends.,No
+123,Aceptarse,Reflexive,To accept oneself,me acepto,te aceptas,se acepta,nos aceptamos,se aceptan,Me acepto como soy.,I accept myself.,Yes 🇵🇷
+124,Relajarse,Reflexive,To relax,me relajo,te relajas,se relaja,nos relajamos,se relajan,Me relajo aquí.,I relax here.,Yes 🇵🇷
+125,Vacacionar,AR,To vacation,vacaciono,vacacionas,vacaciona,vacacionamos,vacacionan,Vacacionamos en PR.,We vacation in PR.,Yes 🇵🇷
+126,Brindar,AR,To toast,brindo,brindas,brinda,brindamos,brindan,Brindamos juntos.,We toast together.,No
+127,Celebrar,AR,To celebrate,celebro,celebras,celebra,celebramos,celebran,Celebramos hoy.,We celebrate today.,No
+128,Disfrutar,AR,To enjoy,disfruto,disfrutas,disfruta,disfrutamos,disfrutan,Disfruto la vida.,I enjoy life.,No
+129,Agradecer,ER,To thank,agradeczco,agradeces,agradece,agradecemos,agradecen,Agradezco todo.,I’m thankful for everything.,No
+130,Bendecir,IR,To bless,bendeczco,bendeces,bendece,bendecimos,bendecen,Bendigo la casa.,I bless the house.,Yes 🇵🇷
+131,Pensarse,Reflexive,To think it over,me pienso,te piensas,se piensa,nos pensamos,se piensan,Me lo pienso.,I think it over.,Yes 🇵🇷
+132,Caer,IR,To fall,caigo,caes,cae,caemos,caen,Me caigo.,I fall.,No
+133,Levantarse,Reflexive,To get up,me levanto,te levantas,se levanta,nos levantamos,se levantan,Me levanto temprano.,I get up early.,No
+134,Acostarse,Reflexive,To go to bed,me acosto,te acostas,se acosta,nos acostamos,se acostan,Me acuesto tarde.,I go to bed late.,No
+135,Despertarse,Reflexive,To wake up,me desperto,te despertas,se desperta,nos despertamos,se despertan,Me despierto a las seis.,I wake up at six.,No
+136,Sentarse,Reflexive,To sit down,me sento,te sentas,se senta,nos sentamos,se sentan,Me siento aquí.,I sit here.,No
+137,Pararse,Reflexive,To stand up,me paro,te paras,se para,nos paramos,se paran,Me paro rápido.,I stand up fast.,Yes 🇵🇷
+138,Mudarse,Reflexive,To move homes,me mudo,te mudas,se muda,nos mudamos,se mudan,Nos mudamos pronto.,We move soon.,No
+139,Quedarse,Reflexive,To stay,me quedo,te quedas,se queda,nos quedamos,se quedan,Me quedo aquí.,I stay here.,No
+140,Irse,Reflexive,To leave,me voy,te vas,se va,nos vamos,se van,Me voy ahora.,I’m leaving now.,No
+141,Llegarse,Reflexive,To stop by,me llego,te llegas,se llega,nos llegamos,se llegan,Me llego luego.,I’ll stop by later.,Yes 🇵🇷
+142,Salirse,Reflexive,To leave suddenly,me salgo,te sales,se sale,nos salimos,se salen,Se salió del chat.,They left the chat.,No
+143,Apurarse,Reflexive,To hurry up,me apuro,te apuras,se apura,nos apuramos,se apuran,Apúrate.,Hurry up.,Yes 🇵🇷
+144,Tranquilizarse,Reflexive,To calm down,me tranquilizo,te tranquilizas,se tranquiliza,nos tranquilizamos,se tranquilizan,Tranquilízate.,Calm down.,No
+145,Enojarse,Reflexive,To get mad,me enojo,te enojas,se enoja,nos enojamos,se enojan,Se enoja fácil.,They get mad easily.,No
+146,Molestarse,Reflexive,To get bothered,me molesto,te molestas,se molesta,nos molestamos,se molestan,No te molestes.,Don’t get bothered.,No
+147,Preocuparse,Reflexive,To worry,me preocupo,te preocupas,se preocupa,nos preocupamos,se preocupan,Me preocupo mucho.,I worry a lot.,No
+148,Alegrarse,Reflexive,To be happy,me alegro,te alegras,se alegra,nos alegramos,se alegran,Me alegro por ti.,I’m happy for you.,No
+149,Orgullarse,Reflexive,To be proud,me orgullo,te orgullas,se orgulla,nos orgullamos,se orgullan,Me orgullo de ti.,I’m proud of you.,No
+150,Darse cuenta,Phrase,To realize,me doy cuenta,te das cuenta,se da cuenta,nos damos cuenta,se dan cuenta,Me doy cuenta ahora.,I realize it now.,No
+151,Olvidarse,Reflexive,To forget,me olvido,te olvidas,se olvida,nos olvidamos,se olvidan,Se me olvida.,I forget.,No
+152,Acordarse,Reflexive,To remember,me acordo,te acordas,se acorda,nos acordamos,se acordan,Me acuerdo de eso.,I remember that.,No
+153,Soñar,AR,To dream,soño,soñas,soña,soñamos,soñan,Sueño contigo.,I dream of you.,No
+154,Intentar,AR,To try,intento,intentas,intenta,intentamos,intentan,Intento mejorar.,I try to improve.,No
+155,Lograr,AR,To achieve,logro,logras,logra,logramos,logran,Logro terminar.,I manage to finish.,No
+156,Fallar,AR,To fail,fallo,fallas,falla,fallamos,fallan,Fallo a veces.,I fail sometimes.,No
+157,Arriesgar,AR,To risk,arriesgo,arriesgas,arriesga,arriesgamos,arriesgan,Arriesgo todo.,I risk everything.,No
+158,Apostar,AR,To bet,aposto,apostas,aposta,apostamos,apostan,Apuesto al equipo.,I bet on the team.,Yes 🇵🇷
+159,Joder,ER,To mess with,jodo,jodes,jode,jodemos,joden,No me jodas.,Don’t mess with me.,Yes 🇵🇷
+160,Fregar,AR,To annoy,frego,fregas,frega,fregamos,fregan,Me friega eso.,That annoys me.,Yes 🇵🇷
+161,Chocar,AR,To crash,choco,chocas,choca,chocamos,chocan,Chocan carros.,Cars crash.,No
+162,Guiar,AR,To drive,guio,guias,guia,guiamos,guian,Guío aquí.,I drive here.,Yes 🇵🇷
+163,Manejar,AR,To drive,manejo,manejas,maneja,manejamos,manejan,Manejo diario.,I drive daily.,Yes 🇵🇷
+164,Montarse,Reflexive,To get in/on,me monto,te montas,se monta,nos montamos,se montan,Me monto en el carro.,I get in the car.,Yes 🇵🇷
+165,Bajarse,Reflexive,To get off,me bajo,te bajas,se baja,nos bajamos,se bajan,Me bajo aquí.,I get off here.,Yes 🇵🇷
+166,Pedir,IR,To ask for,pido,pides,pide,pedimos,piden,Pido ayuda.,I ask for help.,No
+167,Servir,IR,To serve,sirvo,sirves,sirve,servimos,sirven,Sirvo café.,I serve coffee.,No
+168,Repetir,IR,To repeat,repito,repites,repite,repetimos,repiten,Repito la frase.,I repeat the phrase.,No
+169,Vestir,IR,To dress,vesto,vestes,veste,vestimos,vesten,Visto formal.,I dress,No
+201,Cuidar,AR,To take care of,cuido,cuidas,cuida,cuidamos,cuidan,Cuido mi salud.,I take care of my health.,No
+202,Proteger,ER,To protect,protegjo,proteges,protege,protegemos,protegen,Protejo a mi familia.,I protect my family.,No
+203,Defenderse,Reflexive,To defend oneself,me defendo,te defendes,se defende,nos defendemos,se defenden,Me defiendo.,I defend myself.,No
+204,Sobrevivir,IR,To survive,sobrevivo,sobrevives,sobrevive,sobrevivimos,sobreviven,Sobrevivo a todo.,I survive everything.,No
+205,Luchar,AR,To fight,lucho,luchas,lucha,luchamos,luchan,Lucho por mí.,I fight for myself.,No
+206,Resistir,IR,To resist,resisto,resistes,resiste,resistimos,resisten,Resisto presión.,I resist pressure.,No
+207,Rendir,IR,To give up,rendo,rendes,rende,rendimos,renden,No me rindo.,I don’t give up.,No
+208,Lograrse,Reflexive,To be achieved,me logro,te logras,se logra,nos logramos,se logran,Se logra con tiempo.,It’s achieved with time.,No
+209,Triunfar,AR,To succeed,triunfo,triunfas,triunfa,triunfamos,triunfan,Triunfa aquí.,They succeed here.,No
+210,Brillar,AR,To shine,brillo,brillas,brilla,brillamos,brillan,Brillas mucho.,You shine a lot.,No
+211,Inspirar,AR,To inspire,inspiro,inspiras,inspira,inspiramos,inspiran,Inspiras a otros.,You inspire others.,No
+212,Crear,AR,To create,creo,creas,crea,creamos,crean,Creo arte.,I create art.,No
+213,Imaginar,AR,To imagine,imagino,imaginas,imagina,imaginamos,imaginan,Imagino eso.,I imagine that.,No
+214,Soñarse,Reflexive,To envision oneself,me soño,te soñas,se soña,nos soñamos,se soñan,Me sueño allí.,I see myself there.,Yes 🇵🇷
+215,Manifestar,AR,To manifest,manifesto,manifestas,manifesta,manifestamos,manifestan,Manifiesto paz.,I manifest peace.,No
+216,Afirmar,AR,To affirm,afirmo,afirmas,afirma,afirmamos,afirman,Afirmo eso.,I affirm that.,No
+217,Declarar,AR,To declare,declaro,declaras,declara,declaramos,declaran,Declaro verdad.,I declare truth.,No
+218,Bendecirse,Reflexive,To bless oneself,me bendeczco,te bendeces,se bendece,nos bendecimos,se bendecen,Me bendigo hoy.,I bless myself today.,Yes 🇵🇷
+219,Agradecer,ER,To thank,agradeczco,agradeces,agradece,agradecemos,agradecen,Agradezco todo.,I’m grateful for everything.,No
+220,Reconocer,ER,To recognize,reconoczco,reconoces,reconoce,reconocemos,reconocen,Reconozco errores.,I recognize mistakes.,No
+221,Honrar,AR,To honor,honro,honras,honra,honramos,honran,Honro mi historia.,I honor my history.,No
+222,Celebrarse,Reflexive,To celebrate oneself,me celebro,te celebras,se celebra,nos celebramos,se celebran,Se celebra hoy.,It’s celebrated today.,No
+223,Compartirse,Reflexive,To be shared,me comparto,te compartes,se comparte,nos compartimos,se comparten,Se comparte amor.,Love is shared.,No
+224,Conectarse,Reflexive,To connect,me conecto,te conectas,se conecta,nos conectamos,se conectan,Me conecto contigo.,I connect with you.,No
+225,Fluir,IR,To flow,fluo,flues,flue,fluimos,fluen,Todo fluye.,Everything flows.,Yes 🇵🇷
+226,Soltar,AR,To let go,solto,soltas,solta,soltamos,soltan,Suelto el miedo.,I let go of fear.,Yes 🇵🇷
+227,Confiar,AR,To trust,confio,confias,confia,confiamos,confian,Confío en mí.,I trust myself.,No
+228,Creerse,Reflexive,To believe in oneself,me creo,te crees,se cree,nos creemos,se creen,Me la creo.,I believe in myself.,Yes 🇵🇷
+229,Vivirse,Reflexive,To live fully,me vivo,te vives,se vive,nos vivimos,se viven,La vida se vive.,Life is meant to be lived.,Yes 🇵🇷
+230,Escaparse,Reflexive,To sneak away,me escapo,te escapas,se escapa,nos escapamos,se escapan,Se escapa temprano.,They sneak away early.,Yes 🇵🇷
+231,Atreverse,Reflexive,To dare,me atrevo,te atreves,se atreve,nos atrevemos,se atreven,Me atrevo a hablar.,I dare to speak.,No
+232,Arrancar,AR,To start suddenly,arranco,arrancas,arranca,arrancamos,arrancan,Arranco temprano.,I start early.,Yes 🇵🇷
+233,Frenar,AR,To brake,freno,frenas,frena,frenamos,frenan,Freno rápido.,I brake quickly.,Yes 🇵🇷
+234,Chillar,AR,To scream,chillo,chillas,chilla,chillamos,chillan,El niño chilla.,The child screams.,No
+235,Quebrar,AR,To break,quebro,quebras,quebra,quebramos,quebran,Se quiebra fácil.,It breaks easily.,No
+236,Romperse,Reflexive,To break itself,me rompo,te rompes,se rompe,nos rompemos,se rompen,Se rompió.,It broke.,No
+237,Adaptarse,Reflexive,To adapt,me adapto,te adaptas,se adapta,nos adaptamos,se adaptan,Me adapto bien.,I adapt well.,No
+238,Acostumbrarse,Reflexive,To get used to,me acostumbro,te acostumbras,se acostumbra,nos acostumbramos,se acostumbran,Me acostumbro.,I get used to it.,No
+239,Enfrentar,,,enfrento,enfrentas,enfrenta,enfrentamos,enfrentan,,,
