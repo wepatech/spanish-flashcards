@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Spanish Verbs Flashcards</title>
+  <style>
+    body { font-family: system-ui, Arial, sans-serif; margin: 0; padding: 16px; background:#f6f6f6; }
+    .wrap { max-width: 900px; margin: 0 auto; }
+    h1 { margin: 8px 0 12px; font-size: 22px; }
+    .controls { display:flex; gap:10px; flex-wrap:wrap; margin-bottom: 12px; }
+    input, select, button { padding: 10px 12px; border:1px solid #ccc; border-radius: 10px; font-size: 14px; }
+    button { cursor:pointer; }
+    .card {
+      background:#fff; border-radius:16px; padding:18px;
+      box-shadow: 0 6px 18px rgba(0,0,0,.08);
+      min-height: 200px; display:flex; flex-direction:column; justify-content:space-between;
+    }
+    .top { display:flex; justify-content:space-between; gap:12px; align-items:flex-start; }
+    .verb { font-size: 28px; font-weight: 800; }
+    .meta { font-size: 13px; color:#555; text-align:right; }
+    .meaning { font-size: 18px; margin-top: 8px; color:#222; }
+    .example { margin-top: 12px; font-size: 16px; line-height: 1.35; }
+    .muted { color:#666; font-size: 13px; margin-top: 6px; }
+    .nav { display:flex; gap:10px; margin-top: 12px; }
+    .pill { background:#eee; border-radius: 999px; padding: 4px 10px; font-size: 12px; }
+    .hidden { display:none; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Spanish Verbs Flashcards</h1>
+
+    <div class="controls">
+      <input id="search" placeholder="Search verb or meaning (e.g., 'comer' or 'eat')" />
+      <select id="type">
+        <option value="">All types</option>
+        <option value="AR">AR</option>
+        <option value="ER">ER</option>
+        <option value="IR">IR</option>
+        <option value="Reflexive">Reflexive</option>
+        <option value="Phrase">Phrase</option>
+        <option value="Irregular">Irregular</option>
+      </select>
+      <select id="pr">
+        <option value="">PR + Standard</option>
+        <option value="Yes">PR only 🇵🇷</option>
+        <option value="No">Standard only</option>
+      </select>
+      <button id="flipBtn">Flip</button>
+      <button id="shuffleBtn">Shuffle</button>
+    </div>
+
+    <div class="card" id="card">
+      <div>
+        <div class="top">
+          <div>
+            <div class="verb" id="verb">Loading…</div>
+            <div class="meaning" id="meaning"></div>
+          </div>
+          <div class="meta">
+            <div class="pill" id="typePill"></div>
+            <div class="pill" id="prPill"></div>
+            <div class="muted" id="count"></div>
+          </div>
+        </div>
+
+        <div class="example" id="frontSide">
+          <div><b>Example (Spanish):</b> <span id="exSp"></span></div>
+          <div class="muted"><b>English:</b> <span id="exEn"></span></div>
+        </div>
+
+        <div class="example hidden" id="backSide">
+          <div class="muted">Tip: Add conjugations later if you want. For now this is great for vocabulary + usage.</div>
+        </div>
+      </div>
+
+      <div class="nav">
+        <button id="prevBtn">◀ Prev</button>
+        <button id="nextBtn">Next ▶</button>
+      </div>
+    </div>
+
+    <p class="muted" style="margin-top:10px">
+      Powered by your Google Sheet (CSV). Free hosting via GitHub Pages.
+    </p>
+  </div>
+
+  <script>
+    // 1) Paste your published CSV link here:
+    const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSbYZNlgAVAtpZMxslJMnBTf1kKkBGdE549m3_yACaz5ML8r9oExmuxMggA8-Py9Pzb-Plv2AlSdMzp/pub?output=csv";
+
+    let all = [];
+    let filtered = [];
+    let idx = 0;
+    let showingFront = true;
+
+    const el = (id) => document.getElementById(id);
+
+    function parseCSV(text) {
+      // Handles commas inside quotes
+      const rows = [];
+      let row = [], cell = "", inQuotes = false;
+      for (let i = 0; i < text.length; i++) {
+        const c = text[i];
+        const next = text[i+1];
+        if (c === '"' ) {
+          if (inQuotes && next === '"') { cell += '"'; i++; }
+          else inQuotes = !inQuotes;
+        } else if (c === ',' && !inQuotes) {
+          row.push(cell); cell = "";
+        } else if ((c === '\n' || c === '\r') && !inQuotes) {
+          if (cell.length || row.length) { row.push(cell); rows.push(row); }
+          row = []; cell = "";
+          // skip \r\n
+          if (c === '\r' && next === '\n') i++;
+        } else {
+          cell += c;
+        }
+      }
+      if (cell.length || row.length) { row.push(cell); rows.push(row); }
+      return rows;
+    }
+
+    function normalizeRow(r) {
+      // Expected columns:
+      // Number, Verb, Type, English Meaning, Example (Spanish), Example (English), PR Usage
+      return {
+        n: (r[0] || "").trim(),
+        verb: (r[1] || "").trim(),
+        type: (r[2] || "").trim(),
+        meaning: (r[3] || "").trim(),
+        exSp: (r[4] || "").trim(),
+        exEn: (r[5] || "").trim(),
+        pr: (r[6] || "").trim()
+      };
+    }
+
+    function applyFilters() {
+      const q = el("search").value.trim().toLowerCase();
+      const t = el("type").value.trim();
+      const pr = el("pr").value.trim();
+
+      filtered = all.filter(x => {
+        const matchesQ = !q || (x.verb.toLowerCase().includes(q) || x.meaning.toLowerCase().includes(q) || x.exSp.toLowerCase().includes(q));
+        const matchesT = !t || x.type.includes(t);
+        const matchesPR = !pr || (pr === "Yes" ? x.pr.toLowerCase().includes("yes") : x.pr.toLowerCase().includes("no"));
+        return matchesQ && matchesT && matchesPR;
+      });
+
+      idx = 0;
+      render();
+    }
+
+    function render() {
+      if (!filtered.length) {
+        el("verb").textContent = "No matches";
+        el("meaning").textContent = "";
+        el("exSp").textContent = "";
+        el("exEn").textContent = "";
+        el("typePill").textContent = "";
+        el("prPill").textContent = "";
+        el("count").textContent = "";
+        return;
+      }
+
+      const x = filtered[idx];
+      el("verb").textContent = x.verb || "(blank)";
+      el("meaning").textContent = x.meaning ? `Meaning: ${x.meaning}` : "";
+      el("exSp").textContent = x.exSp;
+      el("exEn").textContent = x.exEn;
+      el("typePill").textContent = x.type || "";
+      el("prPill").textContent = (x.pr || "").includes("Yes") ? "PR 🇵🇷" : "Standard";
+      el("count").textContent = `${idx+1} / ${filtered.length}`;
+
+      el("frontSide").classList.toggle("hidden", !showingFront);
+      el("backSide").classList.toggle("hidden", showingFront);
+    }
+
+    function next() { if (!filtered.length) return; idx = (idx + 1) % filtered.length; render(); }
+    function prev() { if (!filtered.length) return; idx = (idx - 1 + filtered.length) % filtered.length; render(); }
+    function flip() { showingFront = !showingFront; render(); }
+    function shuffle() {
+      for (let i = filtered.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [filtered[i], filtered[j]] = [filtered[j], filtered[i]];
+      }
+      idx = 0; render();
+    }
+
+    async function init() {
+      const res = await fetch(CSV_URL);
+      const text = await res.text();
+      const rows = parseCSV(text);
+
+      // Skip header row if present
+      const data = rows.filter(r => r.length && r.join("").trim().length);
+      const startAt = data[0][0].toLowerCase().includes("number") ? 1 : 0;
+
+      all = data.slice(startAt).map(normalizeRow).filter(x => x.verb);
+      filtered = [...all];
+      render();
+    }
+
+    el("search").addEventListener("input", applyFilters);
+    el("type").addEventListener("change", applyFilters);
+    el("pr").addEventListener("change", applyFilters);
+    el("nextBtn").addEventListener("click", next);
+    el("prevBtn").addEventListener("click", prev);
+    el("flipBtn").addEventListener("click", flip);
+    el("shuffleBtn").addEventListener("click", shuffle);
+
+    init();
+  </script>
+</body>
+</html>
