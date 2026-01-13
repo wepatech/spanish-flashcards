@@ -5,354 +5,511 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Spanish Verb Flashcards</title>
 
-<style>
-  :root{
-    --bg1:#f7f7fb;
-    --bg2:#eef2ff;
-    --card:#ffffff;
-    --text:#0f172a;
-    --muted:#64748b;
-    --pill:#eef2ff;
-    --pillText:#3730a3;
-    --btn:#4f46e5;
-    --btnHover:#4338ca;
-    --btn2:#0f172a;
-    --btn2Hover:#111827;
-    --ring:rgba(79,70,229,.25);
-    --shadow: 0 18px 45px rgba(15,23,42,.12);
-    --radius:22px;
-  }
+  <style>
+    :root{
+      --bg1:#f7f7fb;
+      --bg2:#eef2ff;
+      --card:#ffffff;
+      --text:#0f172a;
+      --muted:#64748b;
+      --pill:#eef2ff;
+      --pillText:#3730a3;
+      --pillGrayBg: rgba(15,23,42,.06);
+      --pillGrayText: rgba(15,23,42,.78);
 
-  *{ box-sizing:border-box; }
+      --btn:#4f46e5;
+      --btnHover:#4338ca;
+      --btn2: rgba(15,23,42,.92);
+      --btn2Hover:#111827;
 
-  body{
-    margin:0;
-    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-    color:var(--text);
-    min-height:100vh;
-    background:
-      radial-gradient(1200px 600px at 20% 0%, var(--bg2), transparent 60%),
-      radial-gradient(900px 500px at 90% 20%, #ffe4e6, transparent 55%),
-      linear-gradient(180deg, var(--bg1), #f8fafc 70%);
-    display:flex;
-    justify-content:center;
-    padding:18px;
-  }
+      --shadow: 0 18px 45px rgba(15,23,42,.12);
+      --radius:22px;
 
-  .app{
-    width:100%;
-    max-width:840px;
-  }
+      --ring:rgba(79,70,229,.25);
 
-  .topbar{
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-    align-items:center;
-    justify-content:space-between;
-    margin-bottom:14px;
-  }
+      /* type accents */
+      --ar:#22c55e;
+      --er:#3b82f6;
+      --ir:#f59e0b;
+      --irr:#ef4444;
+    }
 
-  .title{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    font-weight:900;
-    font-size:22px;
-    letter-spacing:-0.02em;
-    margin:0;
-  }
+    *{ box-sizing:border-box; }
 
-  .title .logo{
-    width:34px;
-    height:34px;
-    border-radius:12px;
-    background:linear-gradient(135deg, #4f46e5, #22c55e);
-    box-shadow: 0 10px 22px rgba(79,70,229,.25);
-  }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color:var(--text);
+      min-height:100vh;
+      background:
+        radial-gradient(1200px 600px at 20% 0%, var(--bg2), transparent 60%),
+        radial-gradient(900px 500px at 90% 20%, #ffe4e6, transparent 55%),
+        linear-gradient(180deg, var(--bg1), #f8fafc 70%);
+      display:flex;
+      justify-content:center;
+      padding:18px;
+    }
 
-  .controlsRow{
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-    align-items:center;
-  }
+    .app{
+      width:100%;
+      max-width:980px;
+    }
 
-  .chip{
-    background:rgba(255,255,255,.7);
-    backdrop-filter: blur(8px);
-    border:1px solid rgba(15,23,42,.08);
-    border-radius:999px;
-    padding:10px 12px;
-    font-size:14px;
-    display:flex;
-    align-items:center;
-    gap:8px;
-    box-shadow: 0 8px 20px rgba(15,23,42,.06);
-  }
+    /* Top bar */
+    .topbar{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:14px;
+    }
 
-  .chip input, .chip select{
-    border:none;
-    background:transparent;
-    outline:none;
-    font-size:14px;
-    min-width:190px;
-  }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:900;
+      font-size:22px;
+      letter-spacing:-0.02em;
+      margin:0;
+      white-space:nowrap;
+    }
 
-  .chip select{ min-width: 120px; }
+    .logo{
+      width:34px;
+      height:34px;
+      border-radius:12px;
+      background:linear-gradient(135deg, #4f46e5, #22c55e);
+      box-shadow: 0 10px 22px rgba(79,70,229,.25);
+      flex:0 0 auto;
+    }
 
-  .btn{
-    border:none;
-    border-radius:14px;
-    padding:10px 14px;
-    font-weight:800;
-    font-size:14px;
-    color:#fff;
-    background:var(--btn);
-    cursor:pointer;
-    box-shadow: 0 12px 26px rgba(79,70,229,.22);
-    transition: transform .08s ease, background .15s ease;
-  }
-  .btn:hover{ background:var(--btnHover); }
-  .btn:active{ transform: translateY(1px); }
+    .controlsRow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:flex-end;
+      width:100%;
+    }
 
-  .btn.secondary{
-    background:rgba(15,23,42,.92);
-    box-shadow: 0 12px 26px rgba(15,23,42,.18);
-  }
-  .btn.secondary:hover{ background:var(--btn2Hover); }
+    .chip{
+      background:rgba(255,255,255,.72);
+      backdrop-filter: blur(10px);
+      border:1px solid rgba(15,23,42,.08);
+      border-radius:999px;
+      padding:10px 12px;
+      font-size:14px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      box-shadow: 0 8px 20px rgba(15,23,42,.06);
+    }
 
-  /* Flip card */
-  .scene{
-    perspective:1400px;
-    width:100%;
-    min-height:460px;
-  }
-  .flipper{
-    position:relative;
-    width:100%;
-    min-height:460px;
-    transform-style:preserve-3d;
-    transition:transform 520ms cubic-bezier(.2,.9,.2,1);
-  }
-  .flipper.is-flipped{ transform:rotateY(180deg); }
+    .chip input, .chip select{
+      border:none;
+      background:transparent;
+      outline:none;
+      font-size:14px;
+    }
 
-  .face{
-    position:absolute;
-    inset:0;
-    background:rgba(255,255,255,.92);
-    backdrop-filter: blur(10px);
-    border:1px solid rgba(15,23,42,.08);
-    border-radius:var(--radius);
-    box-shadow: var(--shadow);
-    padding:26px;
-    backface-visibility:hidden;
-    -webkit-backface-visibility:hidden;
-    overflow:hidden;
-  }
-  .face.back{ transform:rotateY(180deg); }
+    .chip input{ min-width:220px; }
+    .chip select{ min-width:130px; cursor:pointer; }
 
-  .headerRow{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    gap:14px;
-  }
+    .btn{
+      border:none;
+      border-radius:14px;
+      padding:10px 14px;
+      font-weight:850;
+      font-size:14px;
+      color:#fff;
+      background:var(--btn);
+      cursor:pointer;
+      box-shadow: 0 12px 26px rgba(79,70,229,.22);
+      transition: transform .08s ease, background .15s ease;
+    }
+    .btn:hover{ background:var(--btnHover); }
+    .btn:active{ transform: translateY(1px); }
 
-  h1{
-    margin:0;
-    font-size:40px;
-    line-height:1.05;
-    letter-spacing:-0.03em;
-  }
+    .btn.secondary{
+      background:var(--btn2);
+      box-shadow: 0 12px 26px rgba(15,23,42,.18);
+    }
+    .btn.secondary:hover{ background:var(--btn2Hover); }
 
-  .meaning{
-    margin-top:8px;
-    font-size:18px;
-    color:#334155;
-  }
+    /* Layout */
+    .layout{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:14px;
+      align-items:start;
+    }
 
-  .meta{
-    display:flex;
-    gap:8px;
-    flex-wrap:wrap;
-    justify-content:flex-end;
-  }
+    @media (min-width: 920px){
+      .layout{
+        grid-template-columns: 1fr 320px;
+      }
+      .controlsRow{
+        width:auto;
+      }
+    }
 
-  .pill{
-    background:var(--pill);
-    color:var(--pillText);
-    padding:7px 12px;
-    border-radius:999px;
-    font-size:13px;
-    font-weight:800;
-    white-space:nowrap;
-  }
-  .pill.gray{
-    background: rgba(15,23,42,.06);
-    color: rgba(15,23,42,.78);
-  }
+    /* Flip card */
+    .scene{
+      perspective:1400px;
+      width:100%;
+      min-height:500px;
+      cursor:pointer;
+      user-select:none;
+      -webkit-tap-highlight-color: transparent;
+    }
 
-  .examples{
-    margin-top:18px;
-    padding-top:16px;
-    border-top:1px solid rgba(15,23,42,.08);
-    font-size:16px;
-    line-height:1.6;
-  }
-  .examples .en{
-    margin-top:8px;
-    color:var(--muted);
-    font-size:14px;
-  }
+    .flipper{
+      position:relative;
+      width:100%;
+      min-height:500px;
+      transform-style:preserve-3d;
+      transition:transform 520ms cubic-bezier(.2,.9,.2,1);
+    }
+    .flipper.is-flipped{ transform:rotateY(180deg); }
 
-  .hint{
-    margin-top:14px;
-    color:var(--muted);
-    font-size:13px;
-  }
+    .face{
+      position:absolute;
+      inset:0;
+      background:rgba(255,255,255,.92);
+      backdrop-filter: blur(10px);
+      border:1px solid rgba(15,23,42,.08);
+      border-radius:var(--radius);
+      box-shadow: var(--shadow);
+      padding:26px;
+      backface-visibility:hidden;
+      -webkit-backface-visibility:hidden;
+      overflow:hidden;
+    }
+    .face.back{ transform:rotateY(180deg); }
 
-  .grid{
-    margin-top:18px;
-    display:grid;
-    grid-template-columns:1fr;
-    gap:10px;
-    font-size:16px;
-  }
-  .grid div{
-    background: rgba(15,23,42,.04);
-    border:1px solid rgba(15,23,42,.06);
-    border-radius:14px;
-    padding:12px 12px;
-  }
-  .grid b{ display:inline-block; min-width:140px; }
+    /* Type ribbon */
+    .ribbon{
+      position:absolute;
+      top:18px;
+      right:18px;
+      padding:8px 12px;
+      border-radius:999px;
+      font-weight:900;
+      font-size:12px;
+      letter-spacing:.02em;
+      color:#fff;
+      box-shadow: 0 12px 26px rgba(15,23,42,.14);
+      background: linear-gradient(135deg, var(--ar), #16a34a);
+    }
+    .ribbon.er{ background: linear-gradient(135deg, var(--er), #2563eb); }
+    .ribbon.ir{ background: linear-gradient(135deg, var(--ir), #d97706); }
+    .ribbon.irr{ background: linear-gradient(135deg, var(--irr), #b91c1c); }
 
-  .nav{
-    margin-top:14px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:12px;
-  }
-  .count{
-    color:var(--muted);
-    font-size:14px;
-    font-weight:700;
-  }
+    /* Card header */
+    .headerRow{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:14px;
+      padding-right:100px; /* makes room for ribbon */
+    }
 
-  .scene{ cursor:pointer; user-select:none; -webkit-tap-highlight-color: transparent; }
+    h1{
+      margin:0;
+      font-size:44px;
+      line-height:1.02;
+      letter-spacing:-0.03em;
+    }
 
-  @media (min-width: 680px){
-    .grid{ grid-template-columns:1fr 1fr; }
-    .chip input{ min-width:240px; }
-  }
-</style>
+    .meaning{
+      margin-top:10px;
+      font-size:18px;
+      color:#334155;
+    }
 
+    .meta{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      text-align:right;
+    }
+
+    .pill{
+      background:var(--pill);
+      color:var(--pillText);
+      padding:7px 12px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:900;
+      white-space:nowrap;
+    }
+    .pill.gray{
+      background: var(--pillGrayBg);
+      color: var(--pillGrayText);
+    }
+
+    .examples{
+      margin-top:18px;
+      padding-top:16px;
+      border-top:1px solid rgba(15,23,42,.08);
+      font-size:16px;
+      line-height:1.6;
+    }
+    .examples .label{
+      font-weight:900;
+      margin-right:6px;
+    }
+    .examples .en{
+      margin-top:10px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .hint{
+      margin-top:14px;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* Back grid like product cards */
+    .grid{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns:1fr;
+      gap:10px;
+      font-size:16px;
+    }
+    .grid div{
+      background: rgba(15,23,42,.04);
+      border:1px solid rgba(15,23,42,.06);
+      border-radius:14px;
+      padding:12px 12px;
+    }
+    .grid b{ display:inline-block; min-width:160px; }
+
+    @media (min-width: 680px){
+      .grid{ grid-template-columns:1fr 1fr; }
+      .chip input{ min-width:280px; }
+      .grid b{ min-width:120px; }
+    }
+
+    /* Sidebar */
+    .side{
+      background:rgba(255,255,255,.65);
+      border:1px solid rgba(15,23,42,.08);
+      border-radius: var(--radius);
+      padding:16px;
+      box-shadow: 0 10px 30px rgba(15,23,42,.08);
+      backdrop-filter: blur(10px);
+    }
+
+    .side h3{
+      margin:0 0 10px 0;
+      font-size:16px;
+      letter-spacing:-0.01em;
+    }
+
+    .side p{
+      margin:10px 0 0 0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.5;
+    }
+
+    .nav{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:space-between;
+      margin-top:14px;
+    }
+
+    .count{
+      color:var(--muted);
+      font-size:14px;
+      font-weight:800;
+      white-space:nowrap;
+    }
+
+    .kbd{
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      background: rgba(15,23,42,.06);
+      border:1px solid rgba(15,23,42,.08);
+      padding:2px 6px;
+      border-radius:8px;
+      font-size:12px;
+      color: rgba(15,23,42,.8);
+    }
+
+    /* tiny toast */
+    .toast{
+      position:fixed;
+      left:50%;
+      bottom:18px;
+      transform:translateX(-50%);
+      background:rgba(15,23,42,.92);
+      color:#fff;
+      border-radius:999px;
+      padding:10px 14px;
+      font-size:13px;
+      font-weight:800;
+      opacity:0;
+      pointer-events:none;
+      transition: opacity .2s ease, transform .2s ease;
+      box-shadow: 0 14px 40px rgba(15,23,42,.22);
+    }
+    .toast.show{
+      opacity:1;
+      transform:translateX(-50%) translateY(-2px);
+    }
+  </style>
 </head>
 
 <body>
   <div class="app">
+
     <div class="topbar">
-      <div class="title">Spanish Verb Flashcards</div>
+      <div class="brand"><span class="logo"></span> Verbo Español Flashcards</div>
 
-      <div class="chip">
-        🔎 <input id="q" placeholder="Search (comer, eat, arroz)" />
-      </div>
-
-      <div class="chip">
-        Type:
-        <select id="typeFilter">
-          <option value="ALL">All</option>
-          <option value="AR">AR</option>
-          <option value="ER">ER</option>
-          <option value="IR">IR</option>
-          <option value="Irregular">Irregular</option>
-        </select>
-      </div>
-
-      <div class="chip">
-        PR:
-        <select id="prFilter">
-          <option value="ALL">All</option>
-          <option value="PR">PR only 🇵🇷</option>
-        </select>
-      </div>
-
-      <button class="btn secondary" id="flipBtn" type="button">Flip</button>
-      <button class="btn" id="shuffleBtn" type="button">Shuffle</button>
-    </div>
-
-    <div class="scene" id="scene">
-      <div class="flipper" id="flipper">
-        <!-- FRONT -->
-        <div class="face front">
-          <div class="row">
-            <div>
-              <h1 id="verb">Loading…</h1>
-              <div class="meaning" id="meaning"></div>
-            </div>
-            <div class="meta">
-              <div class="pill" id="typePill">—</div>
-              <div class="pill" id="prPill">—</div>
-              <div class="pill" id="countPill">—</div>
-            </div>
-          </div>
-
-          <div class="examples">
-            <div id="exSp"></div>
-            <div class="en" id="exEn"></div>
-          </div>
-
-          <div class="hint">Tap the card to flip. Use Prev/Next to move.</div>
+      <div class="controlsRow">
+        <div class="chip">🔎
+          <input id="q" placeholder="Search (hablar, eat, PR slang…)" />
         </div>
 
-        <!-- BACK -->
-        <div class="face back">
-          <div class="row">
-            <div>
-              <h1>Presente</h1>
-              <div class="meaning">Indicativo (no vosotros)</div>
-            </div>
-            <div class="meta">
-              <div class="pill" id="verbMini">—</div>
-            </div>
-          </div>
-
-          <div class="grid">
-            <div><b>Yo:</b> <span id="yoForm">—</span></div>
-            <div><b>Tú:</b> <span id="tuForm">—</span></div>
-            <div><b>Él/Ella/Usted:</b> <span id="elForm">—</span></div>
-            <div><b>Nosotros/as:</b> <span id="nosForm">—</span></div>
-            <div><b>Ellos/Ellas/Uds:</b> <span id="udsForm">—</span></div>
-          </div>
-
-          <div class="hint">Tap to flip back.</div>
+        <div class="chip">
+          Type:
+          <select id="typeFilter">
+            <option value="ALL">All</option>
+            <option value="AR">AR</option>
+            <option value="ER">ER</option>
+            <option value="IR">IR</option>
+            <option value="Irregular">Irregular</option>
+          </select>
         </div>
+
+        <div class="chip">
+          PR:
+          <select id="prFilter">
+            <option value="ALL">All</option>
+            <option value="PR">PR only 🇵🇷</option>
+          </select>
+        </div>
+
+        <button class="btn secondary" id="flipBtn" type="button">Flip</button>
+        <button class="btn" id="shuffleBtn" type="button">Shuffle</button>
       </div>
     </div>
 
-    <div class="nav">
-      <button class="btn secondary" id="prev" type="button">◀ Prev</button>
-      <div class="count" id="count">—</div>
-      <button class="btn secondary" id="next" type="button">Next ▶</button>
+    <div class="layout">
+      <!-- Card -->
+      <div>
+        <div class="scene" id="scene">
+          <div class="flipper" id="flipper">
+
+            <!-- FRONT -->
+            <div class="face front">
+              <div class="ribbon" id="ribbon">AR</div>
+
+              <div class="headerRow">
+                <div>
+                  <h1 id="verb">Loading…</h1>
+                  <div class="meaning" id="meaning"></div>
+                </div>
+
+                <div class="meta">
+                  <div class="pill gray" id="countPill">—</div>
+                  <div class="pill" id="typePill">—</div>
+                  <div class="pill gray" id="prPill">—</div>
+                </div>
+              </div>
+
+              <div class="examples">
+                <div><span class="label">Spanish:</span> <span id="exSp"></span></div>
+                <div class="en"><span class="label">English:</span> <span id="exEn"></span></div>
+              </div>
+
+              <div class="hint">Tap anywhere on the card to flip. Buttons won’t flip it.</div>
+            </div>
+
+            <!-- BACK -->
+            <div class="face back">
+              <div class="ribbon gray" id="ribbonBack">Presente</div>
+
+              <div class="headerRow">
+                <div>
+                  <h1 style="font-size:34px;" id="backTitle">Presente</h1>
+                  <div class="meaning">Indicativo (no vosotros)</div>
+                </div>
+
+                <div class="meta">
+                  <div class="pill" id="verbMini">—</div>
+                  <div class="pill gray" id="typeMini">—</div>
+                </div>
+              </div>
+
+              <div class="grid">
+                <div><b>Yo:</b> <span id="yoForm">—</span></div>
+                <div><b>Tú:</b> <span id="tuForm">—</span></div>
+                <div><b>Él/Ella/Usted:</b> <span id="elForm">—</span></div>
+                <div><b>Nosotros/as:</b> <span id="nosForm">—</span></div>
+                <div><b>Ellos/Ellas/Uds:</b> <span id="udsForm">—</span></div>
+              </div>
+
+              <div class="hint">Tap to flip back.</div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="nav">
+          <button class="btn secondary" id="prev" type="button">◀ Prev</button>
+          <div class="count" id="count">—</div>
+          <button class="btn secondary" id="next" type="button">Next ▶</button>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="side">
+        <h3>How to use</h3>
+        <p>
+          • Tap the card (mobile friendly) or click it to flip.<br/>
+          • Use filters to study only <span class="kbd">AR</span>/<span class="kbd">ER</span>/<span class="kbd">IR</span> or PR-only vocab.<br/>
+          • Shuffle when you want to mix it up.
+        </p>
+        <p id="statusText">Loading your sheet…</p>
+      </div>
     </div>
+
   </div>
 
+  <div class="toast" id="toast"></div>
+
 <script>
-  // 1) PASTE YOUR PUBLISHED CSV LINK HERE (must end in output=csv)
+  // ✅ Replace this with your published CSV link (must end in output=csv)
   const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSbYZNlgAVAtpZMxslJMnBTf1kKkBGdE549m3_yACaz5ML8r9oExmuxMggA8-Py9Pzb-Plv2AlSdMzp/pub?output=csv";
 
-  // Sheet columns expected:
+  // Expected columns:
   // 0 Number | 1 Verb | 2 Type | 3 English Meaning | 4 Yo | 5 Tú | 6 Él/Ella/Usted | 7 Nosotros/as | 8 Ellos/Ellas/Ustedes
   // 9 Example (Spanish) | 10 Example (English) | 11 PR Usage
+
   let all = [];
   let filtered = [];
   let idx = 0;
 
   const flipper = document.getElementById("flipper");
   const scene = document.getElementById("scene");
+  const toastEl = document.getElementById("toast");
 
   const $ = (id) => document.getElementById(id);
+
+  function showToast(msg){
+    toastEl.textContent = msg;
+    toastEl.classList.add("show");
+    setTimeout(() => toastEl.classList.remove("show"), 1200);
+  }
 
   function parseCSV(text) {
     const rows = [];
@@ -376,22 +533,36 @@
     return rows;
   }
 
+  function clean(v){
+    if (!v) return "";
+    if (String(v).trim().startsWith("#")) return ""; // hides #NAME? etc if ever present
+    return String(v).trim();
+  }
+
   function normalize(r) {
-    const pr = (r[11] || "").trim();
+    const prRaw = clean(r[11] || "");
     return {
-      verb: (r[1] || "").trim(),
-      type: (r[2] || "").trim(),
-      meaning: (r[3] || "").trim(),
-      yo: (r[4] || "").trim(),
-      tu: (r[5] || "").trim(),
-      el: (r[6] || "").trim(),
-      nos: (r[7] || "").trim(),
-      uds: (r[8] || "").trim(),
-      exSp: (r[9] || "").trim(),
-      exEn: (r[10] || "").trim(),
-      pr: pr,
-      isPR: /yes/i.test(pr)
+      verb: clean(r[1]),
+      type: clean(r[2]),
+      meaning: clean(r[3]),
+      yo: clean(r[4]),
+      tu: clean(r[5]),
+      el: clean(r[6]),
+      nos: clean(r[7]),
+      uds: clean(r[8]),
+      exSp: clean(r[9]),
+      exEn: clean(r[10]),
+      pr: prRaw,
+      isPR: /yes/i.test(prRaw)
     };
+  }
+
+  function typeClass(type){
+    if (type === "AR") return "ar";
+    if (type === "ER") return "er";
+    if (type === "IR") return "ir";
+    if (type && type.toLowerCase().includes("irregular")) return "irr";
+    return "ar";
   }
 
   function applyFilters() {
@@ -407,10 +578,7 @@
 
       if (!q) return true;
 
-      const hay = [
-        x.verb, x.meaning, x.exSp, x.exEn
-      ].join(" ").toLowerCase();
-
+      const hay = [x.verb, x.meaning, x.exSp, x.exEn].join(" ").toLowerCase();
       return hay.includes(q);
     });
 
@@ -429,33 +597,45 @@
       $("count").textContent = "0 / 0";
       $("countPill").textContent = "0 / 0";
       $("verbMini").textContent = "—";
+      $("typeMini").textContent = "—";
       $("yoForm").textContent = "—";
       $("tuForm").textContent = "—";
       $("elForm").textContent = "—";
       $("nosForm").textContent = "—";
       $("udsForm").textContent = "—";
+      $("statusText").textContent = "No results with these filters.";
       return;
     }
 
     const x = filtered[idx];
     flipper.classList.remove("is-flipped");
 
-    $("verb").textContent = x.verb;
-    $("meaning").textContent = x.meaning;
-    $("exSp").textContent = x.exSp;
-    $("exEn").textContent = x.exEn;
+    $("verb").textContent = x.verb || "";
+    $("meaning").textContent = x.meaning || "";
+    $("exSp").textContent = x.exSp || "";
+    $("exEn").textContent = x.exEn || "";
 
     $("typePill").textContent = x.type || "—";
     $("prPill").textContent = x.isPR ? "PR 🇵🇷" : "Standard";
     $("count").textContent = `${idx + 1} / ${filtered.length}`;
     $("countPill").textContent = `${idx + 1} / ${filtered.length}`;
-    $("verbMini").textContent = x.verb;
+
+    // Ribbon color & label
+    const r = $("ribbon");
+    const cls = typeClass(x.type);
+    r.className = `ribbon ${cls}`;
+    r.textContent = x.type || "—";
+
+    $("verbMini").textContent = x.verb || "—";
+    $("typeMini").textContent = x.type || "—";
 
     $("yoForm").textContent = x.yo || "—";
     $("tuForm").textContent = x.tu || "—";
     $("elForm").textContent = x.el || "—";
     $("nosForm").textContent = x.nos || "—";
     $("udsForm").textContent = x.uds || "—";
+
+    $("statusText").textContent = `Loaded ${all.length} cards. Showing ${filtered.length} with current filters.`;
   }
 
   function next() {
@@ -481,9 +661,10 @@
     }
     idx = 0;
     render();
+    showToast("Shuffled!");
   }
 
-  // Buttons (stop flip when clicking controls)
+  // Buttons (don’t flip when clicking controls)
   $("next").addEventListener("click", (e) => { e.stopPropagation(); next(); });
   $("prev").addEventListener("click", (e) => { e.stopPropagation(); prev(); });
   $("flipBtn").addEventListener("click", (e) => { e.stopPropagation(); flip(); });
@@ -492,6 +673,7 @@
   // Tap card to flip (mobile friendly)
   scene.addEventListener("click", (e) => {
     if (e.target.closest("button")) return;
+    if (e.target.closest("select") || e.target.closest("input")) return;
     flip();
   });
 
@@ -500,7 +682,7 @@
   $("typeFilter").addEventListener("change", applyFilters);
   $("prFilter").addEventListener("change", applyFilters);
 
-  // Load CSV
+  // Load CSV with cache-bust (prevents old exports)
   function withCacheBust(url) {
     const sep = url.includes("?") ? "&" : "?";
     return url + sep + "v=" + Date.now();
@@ -517,9 +699,10 @@
     })
     .catch(err => {
       $("verb").textContent = "Could not load CSV";
-      $("meaning").textContent = "Make sure CSV_URL ends in output=csv and the sheet is published.";
+      $("meaning").textContent = "Check CSV_URL (must be published CSV: output=csv).";
       $("exSp").textContent = "";
       $("exEn").textContent = "";
+      $("statusText").textContent = "CSV load failed. Double-check your link.";
       console.error(err);
     });
 </script>
