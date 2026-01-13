@@ -258,8 +258,8 @@
       if (cell || row.length) { row.push(cell); rows.push(row); }
       return rows;
     }
-
-    function normalize(r) {
+    
+function normalize(r) {
   return {
     n: (r[0] || "").trim(),
     verb: (r[1] || "").trim(),
@@ -270,13 +270,11 @@
     el: (r[6] || "").trim(),
     nos: (r[7] || "").trim(),
     uds: (r[8] || "").trim(),
-    exSp: (r[9] || "").trim(),     // ✅ Example (Spanish)
-    exEn: (r[10] || "").trim(),    // ✅ Example (English)
+    exSp: (r[9] || "").trim(),
+    exEn: (r[10] || "").trim(),
     pr: (r[11] || "").trim()
   };
 }
-
-
 
     function render() {
       const x = filtered[idx];
