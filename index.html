@@ -104,7 +104,7 @@
       display:flex;
       align-items:center;
       gap:8px;
-      box-shadow:none;
+      box-shadow: 0 8px 20px rgba(15,23,42,.06);
     }
 
     .chip input, .chip select{
@@ -126,7 +126,7 @@
       color:#fff;
       background:var(--btn);
       cursor:pointer;
-      box-shadow: none;
+      box-shadow: 0 12px 26px rgba(79,70,229,.22);
       transition: transform .08s ease, background .15s ease;
     }
     .btn:hover{ background:var(--btnHover); }
@@ -134,7 +134,7 @@
 
     .btn.secondary{
       background:var(--btn2);
-      box-shadow: none;
+      box-shadow: 0 12px 26px rgba(15,23,42,.18);
     }
     .btn.secondary:hover{ background:var(--btn2Hover); }
 
@@ -174,19 +174,20 @@
     }
     .flipper.is-flipped{ transform:rotateY(180deg); }
 
-.face{
-  position:absolute;
-  inset:0;
-  background:rgba(255,255,255,.92);
-  backdrop-filter: blur(10px);
-  border:1.5px solid rgba(15,23,42,.15);
-  border-radius:var(--radius);
-  padding:26px;
-  backface-visibility:hidden;
-  -webkit-backface-visibility:hidden;
-  overflow:hidden;
-  box-shadow: none;   /* 👈 no shadow at all */
-}
+    .face{
+      position:absolute;
+      inset:0;
+      background:rgba(255,255,255,.92);
+      backdrop-filter: blur(10px);
+      border:1px solid rgba(15,23,42,.08);
+      border-radius:var(--radius);
+      box-shadow: var(--shadow);
+      padding:26px;
+      backface-visibility:hidden;
+      -webkit-backface-visibility:hidden;
+      overflow:hidden;
+    }
+    .face.back{ transform:rotateY(180deg); }
 
     /* Type ribbon */
     .ribbon{
@@ -371,7 +372,7 @@
   <div class="app">
 
     <div class="topbar">
-      <div class="brand"><span class="logo"></span> Verbo Español Flashcards</div>
+      <div class="brand"><span class="logo"></span> Spanish Verb Flashcards</div>
 
       <div class="controlsRow">
         <div class="chip">🔎
@@ -488,7 +489,7 @@
 
 <script>
   // ✅ Replace this with your published CSV link (must end in output=csv)
-  const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSbYZNlgAVAtpZMxslJMnBTf1kKkBGdE549m3_yACaz5ML8r9oExmuxMggA8-Py9Pzb-Plv2AlSdMzp/pub?output=csv";
+  const CSV_URL = "PASTE_YOUR_PUBLISHED_CSV_LINK_HERE";
 
   // Expected columns:
   // 0 Number | 1 Verb | 2 Type | 3 English Meaning | 4 Yo | 5 Tú | 6 Él/Ella/Usted | 7 Nosotros/as | 8 Ellos/Ellas/Ustedes
