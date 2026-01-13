@@ -97,6 +97,42 @@
     font-size: 13px;
     margin-top: 10px;
   }
+  /* --- FIX FLIP LAYOUT (prevents overlap) --- */
+.scene {
+  perspective: 1200px;
+}
+
+.flipper {
+  position: relative;
+  width: 100%;
+  min-height: 320px;
+  transform-style: preserve-3d;
+  transition: transform 420ms ease;
+}
+
+.flipper.is-flipped {
+  transform: rotateY(180deg);
+}
+
+/* Both faces must be stacked on top of each other */
+.face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Back side rotated */
+.face.back {
+  transform: rotateY(180deg);
+}
+
+/* Make sure the card container takes height */
+.scene {
+  position: relative;
+  min-height: 320px;
+}
+
 </style>
 </head>
 
