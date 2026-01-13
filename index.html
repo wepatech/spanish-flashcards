@@ -39,7 +39,7 @@
 
     button {
       cursor: pointer;
-      background: #fff;
+      ground: #fff;
     }
 
     /* FLIP SETUP */
@@ -60,7 +60,7 @@
     }
 
     .card {
-      background: #fff;
+      ground: #fff;
       border-radius: 16px;
       padding: 18px;
       box-shadow: 0 6px 18px rgba(0,0,0,.08);
@@ -69,12 +69,12 @@
     }
 
     .face {
-      backface-visibility: hidden;
+      face-visibility: hidden;
       position: absolute;
       inset: 0;
     }
 
-    .face.back {
+    .face. {
       transform: rotateY(180deg);
     }
 
@@ -101,7 +101,7 @@
     }
 
     .pill {
-      background: #eee;
+      ground: #eee;
       border-radius: 999px;
       padding: 4px 10px;
       font-size: 12px;
@@ -189,19 +189,15 @@
         </div>
 
         <!-- BACK -->
-        <div class="card face back">
-          <div class="top">
-            <div>
-              <div class="verb" id="verbBack"></div>
-              <div class="meaning">Say it out loud 👇</div>
-            </div>
-            <div class="meta">
-              <div class="pill" id="typePillBack"></div>
-              <div class="pill" id="prPillBack"></div>
-              <div class="muted" id="countBack"></div>
-            </div>
-          </div>
+    <div class="example" style="margin-top:14px; font-size:16px; line-height:1.5;">
+  <div><b>Yo:</b> <span id="yoForm"></span></div>
+  <div><b>Tú:</b> <span id="tuForm"></span></div>
+  <div><b>Él/Ella/Usted:</b> <span id="elForm"></span></div>
+  <div><b>Nosotros/as:</b> <span id="nosForm"></span></div>
+  <div><b>Ellos/Ellas/Ustedes:</b> <span id="udsForm"></span></div>
 
+  <div class="muted" style="margin-top:12px;">Tap the card to flip back</div>
+</div>
           <div class="example">
             <div id="promptSp" style="font-size:18px;"></div>
             <div class="muted" style="margin-top:10px;">
@@ -289,6 +285,12 @@ function normalize(r) {
       el("typePill").textContent = x.type;
       el("prPill").textContent = x.pr.includes("Yes") ? "PR 🇵🇷" : "Standard";
       el("count").textContent = `${idx+1} / ${filtered.length}`;
+      el("yoForm").textContent = x.yo || "—";
+el("tuForm").textContent = x.tu || "—";
+el("elForm").textContent = x.el || "—";
+el("nosForm").textContent = x.nos || "—";
+el("udsForm").textContent = x.uds || "—";
+
 
       el("verbBack").textContent = x.verb;
       el("typePillBack").textContent = x.type;
