@@ -3,36 +3,144 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Spanish Verbs Flashcards</title>
+  <title>Spanish Verb Flashcards</title>
+
   <style>
-    body { font-family: system-ui, Arial, sans-serif; margin: 0; padding: 16px; background:#f6f6f6; }
-    .wrap { max-width: 900px; margin: 0 auto; }
-    h1 { margin: 8px 0 12px; font-size: 22px; }
-    .controls { display:flex; gap:10px; flex-wrap:wrap; margin-bottom: 12px; }
-    input, select, button { padding: 10px 12px; border:1px solid #ccc; border-radius: 10px; font-size: 14px; }
-    button { cursor:pointer; }
-    .card {
-      background:#fff; border-radius:16px; padding:18px;
-      box-shadow: 0 6px 18px rgba(0,0,0,.08);
-      min-height: 200px; display:flex; flex-direction:column; justify-content:space-between;
+    body {
+      font-family: system-ui, Arial, sans-serif;
+      margin: 0;
+      padding: 16px;
+      background: #f6f6f6;
     }
-    .top { display:flex; justify-content:space-between; gap:12px; align-items:flex-start; }
-    .verb { font-size: 28px; font-weight: 800; }
-    .meta { font-size: 13px; color:#555; text-align:right; }
-    .meaning { font-size: 18px; margin-top: 8px; color:#222; }
-    .example { margin-top: 12px; font-size: 16px; line-height: 1.35; }
-    .muted { color:#666; font-size: 13px; margin-top: 6px; }
-    .nav { display:flex; gap:10px; margin-top: 12px; }
-    .pill { background:#eee; border-radius: 999px; padding: 4px 10px; font-size: 12px; }
-    .hidden { display:none; }
+
+    .wrap {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      margin: 8px 0 12px;
+      font-size: 22px;
+    }
+
+    .controls {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    input, select, button {
+      padding: 10px 12px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+
+    button {
+      cursor: pointer;
+      background: #fff;
+    }
+
+    /* FLIP SETUP */
+    .scene {
+      perspective: 1200px;
+    }
+
+    .flipper {
+      position: relative;
+      width: 100%;
+      min-height: 260px;
+      transform-style: preserve-3d;
+      transition: transform 420ms ease;
+    }
+
+    .flipper.is-flipped {
+      transform: rotateY(180deg);
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(0,0,0,.08);
+      height: 100%;
+      width: 100%;
+    }
+
+    .face {
+      backface-visibility: hidden;
+      position: absolute;
+      inset: 0;
+    }
+
+    .face.back {
+      transform: rotateY(180deg);
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .verb {
+      font-size: 28px;
+      font-weight: 800;
+    }
+
+    .meaning {
+      font-size: 18px;
+      margin-top: 8px;
+    }
+
+    .meta {
+      text-align: right;
+      font-size: 13px;
+    }
+
+    .pill {
+      background: #eee;
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 12px;
+      margin-bottom: 6px;
+      display: inline-block;
+    }
+
+    .example {
+      margin-top: 14px;
+      font-size: 16px;
+      line-height: 1.35;
+    }
+
+    .muted {
+      color: #666;
+      font-size: 13px;
+      margin-top: 6px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    /* Make card feel tappable */
+    .scene {
+      cursor: pointer;
+      user-select: none;
+    }
   </style>
 </head>
+
 <body>
   <div class="wrap">
-    <h1>Spanish Verbs Flashcards</h1>
+    <h1>Spanish Verb Flashcards</h1>
 
     <div class="controls">
-      <input id="search" placeholder="Search verb or meaning (e.g., 'comer' or 'eat')" />
+      <input id="search" placeholder="Search (comer, eat, arroz)" />
       <select id="type">
         <option value="">All types</option>
         <option value="AR">AR</option>
@@ -51,166 +159,175 @@
       <button id="shuffleBtn">Shuffle</button>
     </div>
 
-    <div class="card" id="card">
-      <div>
-        <div class="top">
-          <div>
-            <div class="verb" id="verb">Loading…</div>
-            <div class="meaning" id="meaning"></div>
+    <!-- CARD -->
+    <div class="scene" id="scene">
+      <div class="flipper" id="flipper">
+
+        <!-- FRONT -->
+        <div class="card face front">
+          <div class="top">
+            <div>
+              <div class="verb" id="verb">Loading…</div>
+              <div class="meaning" id="meaning"></div>
+            </div>
+            <div class="meta">
+              <div class="pill" id="typePill"></div>
+              <div class="pill" id="prPill"></div>
+              <div class="muted" id="count"></div>
+            </div>
           </div>
-          <div class="meta">
-            <div class="pill" id="typePill"></div>
-            <div class="pill" id="prPill"></div>
-            <div class="muted" id="count"></div>
+
+          <div class="example">
+            <div><b>Spanish:</b> <span id="exSp"></span></div>
+            <div class="muted"><b>English:</b> <span id="exEn"></span></div>
+          </div>
+
+          <div class="nav">
+            <button id="prevBtn">◀ Prev</button>
+            <button id="nextBtn">Next ▶</button>
           </div>
         </div>
 
-        <div class="example" id="frontSide">
-          <div><b>Example (Spanish):</b> <span id="exSp"></span></div>
-          <div class="muted"><b>English:</b> <span id="exEn"></span></div>
+        <!-- BACK -->
+        <div class="card face back">
+          <div class="top">
+            <div>
+              <div class="verb" id="verbBack"></div>
+              <div class="meaning">Say it out loud 👇</div>
+            </div>
+            <div class="meta">
+              <div class="pill" id="typePillBack"></div>
+              <div class="pill" id="prPillBack"></div>
+              <div class="muted" id="countBack"></div>
+            </div>
+          </div>
+
+          <div class="example">
+            <div id="promptSp" style="font-size:18px;"></div>
+            <div class="muted" style="margin-top:10px;">
+              Tap the card to flip back
+            </div>
+          </div>
+
+          <div class="nav">
+            <button id="prevBtn2">◀ Prev</button>
+            <button id="nextBtn2">Next ▶</button>
+          </div>
         </div>
 
-        <div class="example hidden" id="backSide">
-          <div class="muted">Tip: Add conjugations later if you want. For now this is great for vocabulary + usage.</div>
-        </div>
-      </div>
-
-      <div class="nav">
-        <button id="prevBtn">◀ Prev</button>
-        <button id="nextBtn">Next ▶</button>
       </div>
     </div>
-
-    <p class="muted" style="margin-top:10px">
-      Powered by your Google Sheet (CSV). Free hosting via GitHub Pages.
-    </p>
   </div>
 
   <script>
-    // 1) Paste your published CSV link here:
+    // 🔴 REPLACE THIS WITH YOUR CSV LINK
     const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSbYZNlgAVAtpZMxslJMnBTf1kKkBGdE549m3_yACaz5ML8r9oExmuxMggA8-Py9Pzb-Plv2AlSdMzp/pub?output=csv";
 
     let all = [];
     let filtered = [];
     let idx = 0;
-    let showingFront = true;
 
-    const el = (id) => document.getElementById(id);
+    const el = id => document.getElementById(id);
+    const flipper = el("flipper");
+
+    function flip() {
+      flipper.classList.toggle("is-flipped");
+    }
+
+    // Tap anywhere on the card to flip (mobile-friendly)
+    el("scene").addEventListener("click", e => {
+      if (e.target.tagName !== "BUTTON") flip();
+    });
+
+    el("flipBtn").addEventListener("click", flip);
 
     function parseCSV(text) {
-      // Handles commas inside quotes
       const rows = [];
       let row = [], cell = "", inQuotes = false;
       for (let i = 0; i < text.length; i++) {
-        const c = text[i];
-        const next = text[i+1];
-        if (c === '"' ) {
-          if (inQuotes && next === '"') { cell += '"'; i++; }
-          else inQuotes = !inQuotes;
-        } else if (c === ',' && !inQuotes) {
-          row.push(cell); cell = "";
-        } else if ((c === '\n' || c === '\r') && !inQuotes) {
-          if (cell.length || row.length) { row.push(cell); rows.push(row); }
+        const c = text[i], n = text[i+1];
+        if (c === '"' && n === '"') { cell += '"'; i++; }
+        else if (c === '"') inQuotes = !inQuotes;
+        else if (c === ',' && !inQuotes) { row.push(cell); cell = ""; }
+        else if ((c === '\n' || c === '\r') && !inQuotes) {
+          if (cell || row.length) { row.push(cell); rows.push(row); }
           row = []; cell = "";
-          // skip \r\n
-          if (c === '\r' && next === '\n') i++;
-        } else {
-          cell += c;
-        }
+          if (c === '\r' && n === '\n') i++;
+        } else cell += c;
       }
-      if (cell.length || row.length) { row.push(cell); rows.push(row); }
+      if (cell || row.length) { row.push(cell); rows.push(row); }
       return rows;
     }
 
-    function normalizeRow(r) {
-      // Expected columns:
-      // Number, Verb, Type, English Meaning, Example (Spanish), Example (English), PR Usage
+    function normalize(r) {
       return {
-        n: (r[0] || "").trim(),
-        verb: (r[1] || "").trim(),
-        type: (r[2] || "").trim(),
-        meaning: (r[3] || "").trim(),
-        exSp: (r[4] || "").trim(),
-        exEn: (r[5] || "").trim(),
-        pr: (r[6] || "").trim()
+        verb: r[1], type: r[2], meaning: r[3],
+        exSp: r[4], exEn: r[5], pr: r[6]
       };
     }
 
-    function applyFilters() {
-      const q = el("search").value.trim().toLowerCase();
-      const t = el("type").value.trim();
-      const pr = el("pr").value.trim();
+    function render() {
+      const x = filtered[idx];
+      if (!x) return;
 
-      filtered = all.filter(x => {
-        const matchesQ = !q || (x.verb.toLowerCase().includes(q) || x.meaning.toLowerCase().includes(q) || x.exSp.toLowerCase().includes(q));
-        const matchesT = !t || x.type.includes(t);
-        const matchesPR = !pr || (pr === "Yes" ? x.pr.toLowerCase().includes("yes") : x.pr.toLowerCase().includes("no"));
-        return matchesQ && matchesT && matchesPR;
-      });
+      flipper.classList.remove("is-flipped");
+
+      el("verb").textContent = x.verb;
+      el("meaning").textContent = x.meaning;
+      el("exSp").textContent = x.exSp;
+      el("exEn").textContent = x.exEn;
+      el("typePill").textContent = x.type;
+      el("prPill").textContent = x.pr.includes("Yes") ? "PR 🇵🇷" : "Standard";
+      el("count").textContent = `${idx+1} / ${filtered.length}`;
+
+      el("verbBack").textContent = x.verb;
+      el("typePillBack").textContent = x.type;
+      el("prPillBack").textContent = x.pr.includes("Yes") ? "PR 🇵🇷" : "Standard";
+      el("countBack").textContent = `${idx+1} / ${filtered.length}`;
+      el("promptSp").textContent = `Di una oración con "${x.verb}".`;
+    }
+
+    function next() { idx = (idx + 1) % filtered.length; render(); }
+    function prev() { idx = (idx - 1 + filtered.length) % filtered.length; render(); }
+
+    el("nextBtn").onclick = next;
+    el("prevBtn").onclick = prev;
+    el("nextBtn2").onclick = next;
+    el("prevBtn2").onclick = prev;
+
+    el("shuffleBtn").onclick = () => {
+      filtered.sort(() => Math.random() - 0.5);
+      idx = 0;
+      render();
+    };
+
+    function applyFilters() {
+      const q = el("search").value.toLowerCase();
+      const t = el("type").value;
+      const p = el("pr").value;
+
+      filtered = all.filter(x =>
+        (!q || x.verb.toLowerCase().includes(q) || x.meaning.toLowerCase().includes(q)) &&
+        (!t || x.type.includes(t)) &&
+        (!p || (p === "Yes" ? x.pr.includes("Yes") : x.pr.includes("No")))
+      );
 
       idx = 0;
       render();
     }
 
-    function render() {
-      if (!filtered.length) {
-        el("verb").textContent = "No matches";
-        el("meaning").textContent = "";
-        el("exSp").textContent = "";
-        el("exEn").textContent = "";
-        el("typePill").textContent = "";
-        el("prPill").textContent = "";
-        el("count").textContent = "";
-        return;
-      }
+    el("search").oninput = applyFilters;
+    el("type").onchange = applyFilters;
+    el("pr").onchange = applyFilters;
 
-      const x = filtered[idx];
-      el("verb").textContent = x.verb || "(blank)";
-      el("meaning").textContent = x.meaning ? `Meaning: ${x.meaning}` : "";
-      el("exSp").textContent = x.exSp;
-      el("exEn").textContent = x.exEn;
-      el("typePill").textContent = x.type || "";
-      el("prPill").textContent = (x.pr || "").includes("Yes") ? "PR 🇵🇷" : "Standard";
-      el("count").textContent = `${idx+1} / ${filtered.length}`;
-
-      el("frontSide").classList.toggle("hidden", !showingFront);
-      el("backSide").classList.toggle("hidden", showingFront);
-    }
-
-    function next() { if (!filtered.length) return; idx = (idx + 1) % filtered.length; render(); }
-    function prev() { if (!filtered.length) return; idx = (idx - 1 + filtered.length) % filtered.length; render(); }
-    function flip() { showingFront = !showingFront; render(); }
-    function shuffle() {
-      for (let i = filtered.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [filtered[i], filtered[j]] = [filtered[j], filtered[i]];
-      }
-      idx = 0; render();
-    }
-
-    async function init() {
-      const res = await fetch(CSV_URL);
-      const text = await res.text();
-      const rows = parseCSV(text);
-
-      // Skip header row if present
-      const data = rows.filter(r => r.length && r.join("").trim().length);
-      const startAt = data[0][0].toLowerCase().includes("number") ? 1 : 0;
-
-      all = data.slice(startAt).map(normalizeRow).filter(x => x.verb);
-      filtered = [...all];
-      render();
-    }
-
-    el("search").addEventListener("input", applyFilters);
-    el("type").addEventListener("change", applyFilters);
-    el("pr").addEventListener("change", applyFilters);
-    el("nextBtn").addEventListener("click", next);
-    el("prevBtn").addEventListener("click", prev);
-    el("flipBtn").addEventListener("click", flip);
-    el("shuffleBtn").addEventListener("click", shuffle);
-
-    init();
+    fetch(CSV_URL)
+      .then(r => r.text())
+      .then(t => {
+        const rows = parseCSV(t);
+        all = rows.slice(1).map(normalize).filter(x => x.verb);
+        filtered = [...all];
+        render();
+      });
   </script>
 </body>
 </html>
